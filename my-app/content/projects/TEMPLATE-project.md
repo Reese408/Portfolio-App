@@ -12,6 +12,12 @@ github: https://github.com/yourusername/repo-name
 demo: https://your-demo-url.com
 featured: true  # true | false
 order: 1  # Lower numbers appear first
+video: project-demo.mp4  # Video filename in /public/projects/ (optional)
+skills:  # Skill slugs to link back to skill detail pages (optional)
+  - javascript
+  - react
+  - nodejs
+  - postgresql
 ---
 
 # Project Title

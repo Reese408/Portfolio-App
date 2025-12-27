@@ -5,6 +5,11 @@ location: City, State
 startDate: Month Year
 endDate: Month Year  # or "Present"
 type: internship  # internship | full-time | part-time | contract
+skills:  # Skill slugs to link back to skill detail pages (optional)
+  - javascript
+  - react
+  - python
+  - django
 ---
 
 # [Job Title] at [Company Name]

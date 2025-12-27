@@ -1,7 +1,9 @@
 import { getResume } from '@/lib/content/loader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Briefcase, MapPin, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const companyIcons: { [key: string]: string } = {
   'Techr2': '🔒',
@@ -27,7 +29,9 @@ export default function ExperiencePage() {
         </div>
 
         <div className="space-y-8">
-          {resume.experience.map((exp, index) => (
+          {resume.experience.map((exp, index) => {
+            const slug = exp.company.toLowerCase().replace(/\s+/g, '-');
+            return (
             <Card
               key={index}
               className="group overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm"
@@ -67,17 +71,34 @@ export default function ExperiencePage() {
 
               <CardContent>
                 <h3 className="text-lg font-semibold mb-4 text-[rgb(39,38,53)]">Key Achievements:</h3>
-                <ul className="space-y-3">
-                  {exp.highlights.map((highlight, highlightIndex) => (
+                <ul className="space-y-3 mb-6">
+                  {exp.highlights.slice(0, 3).map((highlight, highlightIndex) => (
                     <li key={highlightIndex} className="flex items-start gap-3 group/item">
                       <CheckCircle2 className="w-5 h-5 text-[rgb(177,229,242)] flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
                       <span className="text-[rgb(39,38,53)]/80 leading-relaxed">{highlight}</span>
                     </li>
                   ))}
+                  {exp.highlights.length > 3 && (
+                    <li className="text-sm text-[rgb(39,38,53)]/60 italic ml-8">
+                      + {exp.highlights.length - 3} more achievement{exp.highlights.length - 3 !== 1 ? 's' : ''}
+                    </li>
+                  )}
                 </ul>
+
+                <Button
+                  asChild
+                  variant="default"
+                  className="w-full bg-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/80 text-[rgb(39,38,53)]"
+                >
+                  <Link href={`/experience/${slug}`}>
+                    <ArrowRight className="w-4 h-4 mr-2" />
+                    View Full Details
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Leadership Section */}

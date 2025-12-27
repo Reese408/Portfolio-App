@@ -6,14 +6,45 @@
       "date": "2024",
       "status": "Completed",
       "logo": "harvard",
-      "description": "Comprehensive course covering web development with Django, JavaScript, SQL, and modern web technologies"
+      "description": "Comprehensive course covering web development with Django, JavaScript, SQL, and modern web technologies",
+      "whatLearned": [
+        "Building full-stack web applications with Django and JavaScript",
+        "Database design and SQL query optimization",
+        "RESTful API design and implementation",
+        "Front-end development with modern JavaScript",
+        "Security best practices for web applications"
+      ],
+      "skills": [
+        "python",
+        "javascript",
+        "django"
+      ],
+      "images": [
+        "cs50w-certificate.png"
+      ]
     },
     {
       "name": "React – The Complete Guide 2025 (Next.js, Redux)",
       "issuer": "Udemy",
+      "date": "2025", 
       "status": "Completed",
       "logo": "udemy",
-      "description": "Advanced React course covering Next.js, Redux state management, and modern React patterns"
+      "description": "Advanced React course covering Next.js, Redux state management, and modern React patterns",
+      "whatLearned": [
+        "Advanced React patterns and hooks",
+        "State management with Redux and Context API",
+        "Server-side rendering with Next.js",
+        "Performance optimization techniques",
+        "TypeScript integration with React"
+      ],
+      "skills": [
+        "react",
+        "javascript",
+        "typescript"
+      ],
+      "images": [
+        "react-certificate.png"
+      ]
     },
     {
       "name": "Ultimate AWS Certified Solutions Architect Associate 2026",

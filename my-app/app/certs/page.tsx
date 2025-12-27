@@ -2,7 +2,8 @@ import { getCertifications } from '@/lib/content/loader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Award, Calendar, ExternalLink, CheckCircle2, Clock } from 'lucide-react';
+import Link from 'next/link';
+import { Award, Calendar, ExternalLink, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
 
 const certIcons: { [key: string]: string } = {
   'harvard': '🎓',
@@ -30,10 +31,12 @@ export default function CertificationsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {certifications.map((cert, index) => (
+          {certifications.map((cert, index) => {
+            const slug = cert.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+            return (
             <Card
               key={index}
-              className="group overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm"
+              className="group overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm cursor-pointer"
             >
               {/* Certificate Header */}
               <div className={`h-32 bg-linear-to-br ${certGradients[cert.logo || ''] || 'from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20'} flex items-center justify-center relative overflow-hidden`}>
@@ -72,26 +75,40 @@ export default function CertificationsPage() {
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-sm text-[rgb(39,38,53)]/70 leading-relaxed">
+                <p className="text-sm text-[rgb(39,38,53)]/70 leading-relaxed line-clamp-3">
                   {cert.description}
                 </p>
 
-                {cert.credentialUrl && (
+                <div className="flex gap-2">
                   <Button
                     asChild
-                    variant="outline"
-                    className="w-full border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                    variant="default"
+                    className="flex-1 bg-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/80 text-[rgb(39,38,53)]"
                   >
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Credential
-                    </a>
+                    <Link href={`/certs/${slug}`}>
+                      <ArrowRight className="w-4 h-4 mr-2" />
+                      Learn More
+                    </Link>
                   </Button>
-                )}
+
+                  {cert.credentialUrl && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="icon"
+                      className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                    >
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                </div>
 
                 {cert.credentialId && (
                   <p className="text-xs text-[rgb(39,38,53)]/40 text-center">
@@ -107,7 +124,8 @@ export default function CertificationsPage() {
                 )}
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Stats Summary */}
