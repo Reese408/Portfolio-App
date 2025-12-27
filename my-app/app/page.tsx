@@ -2,6 +2,7 @@ import { getResume, getFeaturedProjects, getCertifications } from '@/lib/content
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Download, ArrowRight, Code2, Award, Briefcase, GraduationCap } from 'lucide-react';
 
@@ -18,6 +19,16 @@ export default function Home() {
         <div className="absolute inset-0 bg-linear-to-br from-[rgb(39,38,53)]/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 py-24 relative">
           <div className="text-center mb-16">
+            {/* Profile Picture */}
+            <div className="mb-8 flex justify-center">
+              <Avatar className="w-32 h-32 border-4 border-[rgb(177,229,242)] shadow-2xl">
+                <AvatarImage src="/ProfilePic.jpg" alt={resume.name} />
+                <AvatarFallback className="text-4xl font-bold text-[rgb(39,38,53)] bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
+                  {resume.name.split(' ').map(n => n[0]).join('')}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+
             {/* Profile Badge */}
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border-2 border-[rgb(177,229,242)] mb-6">
               <span className="w-2 h-2 bg-[rgb(177,229,242)] rounded-full animate-pulse" />

@@ -66,6 +66,30 @@ export interface Skill {
   icon?: string;
   yearsOfExperience?: number;
   certifications?: string[];
+  slug?: string;
+}
+
+// Skill Detail Types (for markdown files)
+export interface SkillDetail {
+  name: string;
+  slug: string;
+  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+  icon?: string;
+  yearsOfExperience?: number;
+  category: string;
+  color?: string;
+  content: string; // Markdown content
+  metadata: SkillMetadata;
+}
+
+export interface SkillMetadata {
+  name: string;
+  slug: string;
+  level: string;
+  icon?: string;
+  yearsOfExperience?: number;
+  category: string;
+  color?: string;
 }
 
 // Certifications Types
@@ -83,6 +107,9 @@ export interface Certification {
   expiryDate?: string;
   logo?: string;
   description: string;
+  whatLearned?: string[];
+  skills?: string[]; // Skill slugs to link back to
+  images?: string[]; // Image filenames in /public/certs/
 }
 
 // Project Types
@@ -95,6 +122,8 @@ export interface Project {
   demo?: string;
   featured: boolean;
   order: number;
+  video?: string; // Video filename in /public/projects/
+  skills?: string[]; // Skill slugs to link back to
   content: string; // Markdown content
   metadata: ProjectMetadata;
 }
@@ -108,6 +137,8 @@ export interface ProjectMetadata {
   demo?: string;
   featured: boolean;
   order: number;
+  video?: string; // Video filename in /public/projects/
+  skills?: string[]; // Skill slugs to link back to
 }
 
 // Experience Detail Types (for markdown files)
@@ -118,6 +149,7 @@ export interface ExperienceDetail {
   startDate: string;
   endDate: string;
   type: 'internship' | 'full-time' | 'part-time' | 'contract';
+  skills?: string[]; // Skill slugs to link back to
   content: string; // Markdown content
   metadata: ExperienceMetadata;
 }
@@ -129,4 +161,5 @@ export interface ExperienceMetadata {
   startDate: string;
   endDate: string;
   type: string;
+  skills?: string[]; // Skill slugs to link back to
 }

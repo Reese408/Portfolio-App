@@ -2,10 +2,10 @@ import { getAllProjects, getProjectBySlug } from '@/lib/content/loader';
 import { Markdown } from '@/components/ui/markdown';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Code2 } from 'lucide-react';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
@@ -21,8 +21,9 @@ const projectImages: { [key: string]: string } = {
   'cnc-construction': '🏗️',
 };
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -101,10 +102,58 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           </div>
         </Card>
 
+        {/* Video Demo */}
+        {project.video && (
+          <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-2xl text-[rgb(39,38,53)]">Project Demo</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <video
+                controls
+                className="w-full rounded-lg"
+                poster={`/projects/${project.slug}-poster.jpg`}
+              >
+                <source src={`/projects/${project.video}`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Content */}
-        <Card className="p-8 bg-white/90 backdrop-blur-sm border-2 border-[rgb(177,229,242)]/20">
+        <Card className="mb-8 p-8 bg-white/90 backdrop-blur-sm border-2 border-[rgb(177,229,242)]/20">
           <Markdown content={project.content} />
         </Card>
+
+        {/* Related Skills */}
+        {project.skills && project.skills.length > 0 && (
+          <Card className="mb-8 p-8 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 border-2 border-[rgb(177,229,242)]">
+            <CardHeader className="p-0 mb-6">
+              <CardTitle className="text-2xl text-[rgb(39,38,53)] flex items-center gap-2">
+                <Code2 className="w-6 h-6" />
+                Skills Used in This Project
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="flex flex-wrap gap-3">
+                {project.skills.map((skillSlug) => (
+                  <Button
+                    key={skillSlug}
+                    asChild
+                    variant="outline"
+                    className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                  >
+                    <Link href={`/skills/${skillSlug}`}>
+                      <Code2 className="w-4 h-4 mr-2" />
+                      {skillSlug.charAt(0).toUpperCase() + skillSlug.slice(1).replace(/-/g, ' ')}
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );

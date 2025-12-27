@@ -3,9 +3,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   GraduationCap,
   Award,
@@ -68,8 +69,9 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
             <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
               <div className="h-32 bg-linear-to-br from-[rgb(177,229,242)]/30 to-[rgb(206,206,206)]/30 relative">
                 <div className="absolute -bottom-12 left-8">
-                  <Avatar className="w-24 h-24 border-4 border-white shadow-xl bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
-                    <AvatarFallback className="text-3xl font-bold text-[rgb(39,38,53)]">
+                  <Avatar className="w-24 h-24 border-4 border-white shadow-xl">
+                    <AvatarImage src="/ProfilePic.jpg" alt={resume.name} />
+                    <AvatarFallback className="text-3xl font-bold text-[rgb(39,38,53)] bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
                       {resume.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>

@@ -1,7 +1,10 @@
-import { getSkills } from '@/lib/content/loader';
+import { getSkills, getAllSkillDetails } from '@/lib/content/loader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const skillIcons: { [key: string]: string } = {
   javascript: '⚡',
@@ -28,6 +31,13 @@ const skillIcons: { [key: string]: string } = {
 
 export default function SkillPage() {
   const skillsData = getSkills();
+  const skillDetails = getAllSkillDetails();
+
+  // Create a map of skill names to slugs
+  const skillSlugMap = skillDetails.reduce((acc, skill) => {
+    acc[skill.name.toLowerCase()] = skill.slug;
+    return acc;
+  }, {} as Record<string, string>);
 
   const getLevelColor = (level: string) => {
     switch (level) {
@@ -88,28 +98,39 @@ export default function SkillPage() {
                         </div>
                       </div>
                     </CardHeader>
-                    {(skill.yearsOfExperience || (skill.certifications && skill.certifications.length > 0)) && (
-                      <CardContent>
-                        {skill.yearsOfExperience && (
-                          <p className="text-sm text-[rgb(39,38,53)]/60 mb-2">
-                            📅 {skill.yearsOfExperience}{' '}
-                            {skill.yearsOfExperience === 1 ? 'year' : 'years'} experience
+                    <CardContent>
+                      {skill.yearsOfExperience && (
+                        <p className="text-sm text-[rgb(39,38,53)]/60 mb-2">
+                          📅 {skill.yearsOfExperience}{' '}
+                          {skill.yearsOfExperience === 1 ? 'year' : 'years'} experience
+                        </p>
+                      )}
+                      {skill.certifications && skill.certifications.length > 0 && (
+                        <div className="space-y-1 mb-4">
+                          <p className="text-xs font-semibold text-[rgb(39,38,53)]/80">
+                            Certifications:
                           </p>
-                        )}
-                        {skill.certifications && skill.certifications.length > 0 && (
-                          <div className="space-y-1">
-                            <p className="text-xs font-semibold text-[rgb(39,38,53)]/80">
-                              Certifications:
+                          {skill.certifications.map((cert, certIndex) => (
+                            <p key={certIndex} className="text-xs text-[rgb(39,38,53)]/60">
+                              🏆 {cert}
                             </p>
-                            {skill.certifications.map((cert, certIndex) => (
-                              <p key={certIndex} className="text-xs text-[rgb(39,38,53)]/60">
-                                🏆 {cert}
-                              </p>
-                            ))}
-                          </div>
-                        )}
-                      </CardContent>
-                    )}
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Learn More Button - Only show if detail page exists */}
+                      {skillSlugMap[skill.name.toLowerCase()] && (
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="w-full border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20 mt-4"
+                        >
+                          <Link href={`/skills/${skillSlugMap[skill.name.toLowerCase()]}`}>
+                            Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                          </Link>
+                        </Button>
+                      )}
+                    </CardContent>
                   </Card>
                 ))}
               </div>
