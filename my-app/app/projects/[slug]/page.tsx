@@ -1,7 +1,11 @@
 import { getAllProjects, getProjectBySlug } from '@/lib/content/loader';
 import { Markdown } from '@/components/ui/markdown';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
@@ -9,6 +13,13 @@ export async function generateStaticParams() {
     slug: project.slug,
   }));
 }
+
+const projectImages: { [key: string]: string } = {
+  'workout-app': '💪',
+  'gaminghub': '🎮',
+  'marie-simulator': '💻',
+  'cnc-construction': '🏗️',
+};
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = getProjectBySlug(params.slug);
@@ -18,62 +29,82 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <Link
-        href="/projects"
-        className="text-sm text-muted-foreground hover:text-primary mb-6 inline-block"
-      >
-        ← Back to Projects
-      </Link>
+    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-12">
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Back Button */}
+        <Button
+          asChild
+          variant="outline"
+          className="mb-8 border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+        >
+          <Link href="/projects">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Projects
+          </Link>
+        </Button>
 
-      <div className="mb-6">
-        <div className="flex items-start justify-between mb-3">
-          <h1 className="text-4xl font-bold">{project.title}</h1>
-          <span
-            className={`text-sm px-3 py-1 rounded ${
-              project.status === 'Completed'
-                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-            }`}
-          >
-            {project.status}
-          </span>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech, index) => (
-            <span key={index} className="text-sm px-3 py-1 bg-accent rounded font-medium">
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex gap-4 mb-8">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border border-border rounded-md hover:bg-accent"
+        {/* Hero Section */}
+        <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
+          <div className="h-48 bg-linear-to-br from-[rgb(177,229,242)]/30 to-[rgb(206,206,206)]/30 flex items-center justify-center relative">
+            <span className="text-9xl">{projectImages[project.slug] || '📦'}</span>
+            <Badge
+              className={`absolute top-6 right-6 text-base px-4 py-2 ${
+                project.status === 'Completed'
+                  ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)]'
+                  : 'bg-[rgb(206,206,206)] text-[rgb(39,38,53)]'
+              }`}
             >
-              View on GitHub
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-            >
-              Live Demo
-            </a>
-          )}
-        </div>
-      </div>
+              {project.status}
+            </Badge>
+          </div>
 
-      <div className="mt-8">
-        <Markdown content={project.content} />
+          <div className="p-8">
+            <h1 className="text-5xl font-bold mb-4 text-[rgb(39,38,53)]">{project.title}</h1>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((tech, index) => (
+                <Badge
+                  key={index}
+                  variant="secondary"
+                  className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)] px-3 py-1"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+
+            <div className="flex gap-4">
+              {project.github && (
+                <Button
+                  asChild
+                  className="bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80"
+                >
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4 mr-2" />
+                    View on GitHub
+                  </a>
+                </Button>
+              )}
+              {project.demo && (
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                >
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo
+                  </a>
+                </Button>
+              )}
+            </div>
+          </div>
+        </Card>
+
+        {/* Content */}
+        <Card className="p-8 bg-white/90 backdrop-blur-sm border-2 border-[rgb(177,229,242)]/20">
+          <Markdown content={project.content} />
+        </Card>
       </div>
     </div>
   );
