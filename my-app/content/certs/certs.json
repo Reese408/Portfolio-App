@@ -1,0 +1,26 @@
+{
+  "certifications": [
+    {
+      "name": "CS50W: Web Programming with Python & JavaScript",
+      "issuer": "Harvard University (edX)",
+      "date": "2024",
+      "status": "Completed",
+      "logo": "harvard",
+      "description": "Comprehensive course covering web development with Django, JavaScript, SQL, and modern web technologies"
+    },
+    {
+      "name": "React – The Complete Guide 2025 (Next.js, Redux)",
+      "issuer": "Udemy",
+      "status": "Completed",
+      "logo": "udemy",
+      "description": "Advanced React course covering Next.js, Redux state management, and modern React patterns"
+    },
+    {
+      "name": "Ultimate AWS Certified Solutions Architect Associate 2026",
+      "issuer": "Udemy",
+      "status": "In Progress",
+      "logo": "aws",
+      "description": "Comprehensive AWS certification prep covering cloud architecture, services, and best practices"
+    }
+  ]
+}

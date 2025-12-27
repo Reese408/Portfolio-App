@@ -1,0 +1,94 @@
+{
+  "name": "Reese Redman",
+  "title": "Computer Science & CyberSecurity Student",
+  "email": "reeseredman099@gmail.com",
+  "phone": "440-645-1162",
+  "location": "Newark, Ohio",
+  "links": {
+    "github": "https://github.com/Reese408",
+    "linkedin": "https://www.linkedin.com/in/robert-redman-093b50338/"
+  },
+  "summary": "Enthusiastic Computer Science and CyberSecurity student with a deep passion for learning and problem solving. Thrives in collaborative environments, and looking to continuously expand my skill set through hands-on projects and challenges. Motivated to contribute and adapt, and grow while helping build effective solutions.",
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science & CyberSecurity",
+      "school": "Ashland University",
+      "location": "Ashland, Ohio",
+      "startDate": "Aug 2023",
+      "graduationDate": "May 2027",
+      "relevantCoursework": [
+        "AI & Machine Learning",
+        "Data Structures",
+        "System Design",
+        "Computer Architecture",
+        "Operating Systems",
+        "Linux Security",
+        "Linear Algebra",
+        "Discrete Mathematics",
+        "Database Management"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "System Engineer Intern",
+      "company": "Techr2",
+      "location": "Pataskala, Ohio",
+      "startDate": "May 2025",
+      "endDate": "Aug 2025",
+      "highlights": [
+        "Executed data security audits ensuring compliance with GDPR, NIST, and governmental regulations for enterprise clients",
+        "Supported secure data destruction processes using proprietary Track-Contain-Destroy-Verify methodology",
+        "Configured servers and contributed to automation scripting for IT asset management systems",
+        "Assisted in documentation and compliance reporting for ISO-certified data eradication services"
+      ]
+    },
+    {
+      "title": "Web Development Intern",
+      "company": "CNC Construction",
+      "location": "Ashland, Ohio",
+      "startDate": "May 2024",
+      "endDate": "Aug 2024",
+      "highlights": [
+        "Built and deployed mobile-responsive website using Django and vanilla JavaScript",
+        "Developed custom application forms and secure user authentication systems",
+        "Delivered project on time while managing multiple client requirements and deadlines",
+        "Integrated user registration, authentication, and secure client communication features",
+        "Designed customizable job application forms and contact management system"
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "role": "Web Development Team Member",
+      "organization": "ACM Club - Ashland University",
+      "startDate": "Aug 2024",
+      "endDate": "Present",
+      "description": "Participate in team meetings, contribute to collaborative development projects, and engage in technical discussions"
+    },
+    {
+      "role": "Huddle Leader",
+      "organization": "Bible Study Team",
+      "description": "Lead discussions, mentor peers, and foster team collaboration"
+    },
+    {
+      "role": "Student-Athlete",
+      "organization": "Wrestling Team",
+      "description": "Develop discipline, teamwork, and time management through competitive sport"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Upsilon Pi Epsilon Award",
+      "issuer": "International Honor Society for Computing",
+      "date": "April 2025",
+      "description": "Recognizes academic excellence in computing and computer science"
+    },
+    {
+      "name": "Scholar All-American",
+      "issuer": "National Wrestling Coaches Association",
+      "date": "April 2025",
+      "description": "Honors student-athletes with outstanding academic achievement and athletic performance"
+    }
+  ]
+}

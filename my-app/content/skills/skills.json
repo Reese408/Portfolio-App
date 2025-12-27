@@ -1,0 +1,168 @@
+{
+  "categories": [
+    {
+      "name": "Languages",
+      "skills": [
+        {
+          "name": "JavaScript",
+          "level": "Advanced",
+          "icon": "javascript"
+        },
+        {
+          "name": "TypeScript",
+          "level": "Advanced",
+          "icon": "typescript"
+        },
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "icon": "python"
+        },
+        {
+          "name": "Java",
+          "level": "Intermediate",
+          "icon": "java"
+        },
+        {
+          "name": "SQL",
+          "level": "Intermediate",
+          "icon": "database"
+        },
+        {
+          "name": "HTML/CSS",
+          "level": "Advanced",
+          "icon": "html"
+        }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "skills": [
+        {
+          "name": "React",
+          "level": "Advanced",
+          "icon": "react"
+        },
+        {
+          "name": "Next.js",
+          "level": "Advanced",
+          "icon": "nextjs"
+        },
+        {
+          "name": "Redux",
+          "level": "Advanced",
+          "icon": "redux"
+        },
+        {
+          "name": "EJS",
+          "level": "Intermediate",
+          "icon": "ejs"
+        }
+      ]
+    },
+    {
+      "name": "Backend",
+      "skills": [
+        {
+          "name": "Node.js",
+          "level": "Advanced",
+          "icon": "nodejs"
+        },
+        {
+          "name": "Express",
+          "level": "Advanced",
+          "icon": "express"
+        },
+        {
+          "name": "Django",
+          "level": "Advanced",
+          "icon": "django"
+        },
+        {
+          "name": "Socket.io",
+          "level": "Intermediate",
+          "icon": "socketio"
+        },
+        {
+          "name": "PostgreSQL",
+          "level": "Intermediate",
+          "icon": "postgresql"
+        },
+        {
+          "name": "MongoDB",
+          "level": "Intermediate",
+          "icon": "mongodb"
+        },
+        {
+          "name": "SQLite",
+          "level": "Intermediate",
+          "icon": "sqlite"
+        }
+      ]
+    },
+    {
+      "name": "DevOps & Tools",
+      "skills": [
+        {
+          "name": "Docker",
+          "level": "Intermediate",
+          "icon": "docker"
+        },
+        {
+          "name": "Git",
+          "level": "Advanced",
+          "icon": "git"
+        },
+        {
+          "name": "Linux/Ubuntu",
+          "level": "Advanced",
+          "icon": "linux"
+        }
+      ]
+    },
+    {
+      "name": "Concepts & Expertise",
+      "skills": [
+        {
+          "name": "Full-Stack Web Development",
+          "level": "Advanced"
+        },
+        {
+          "name": "API Design",
+          "level": "Advanced"
+        },
+        {
+          "name": "Data Structures",
+          "level": "Advanced"
+        },
+        {
+          "name": "System Design",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Cybersecurity Fundamentals",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Database Management",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Systems Modeling",
+          "level": "Intermediate"
+        }
+      ]
+    }
+  ],
+  "softSkills": [
+    "Critical Thinking",
+    "Adaptability & Fast Learning",
+    "Collaboration & Teamwork",
+    "Initiative & Self-Motivation",
+    "Communication Skills",
+    "Analytical Thinking",
+    "Time Management",
+    "Attention to Detail",
+    "Problem Solving"
+  ]
+}
