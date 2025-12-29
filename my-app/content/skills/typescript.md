@@ -3,67 +3,63 @@ name: TypeScript
 slug: typescript
 level: Intermediate
 icon: 🔷
-yearsOfExperience: 2
+yearsOfExperience: 1
 category: Languages
 color: from-blue-600/20 to-blue-400/20
 ---
 
 # TypeScript
 
-[Add your introduction to TypeScript here - why you use it, your experience level, etc.]
+TypeScript has become essential to my modern web development workflow, especially when working with Next.js and React. I started using TypeScript in Spring 2025 alongside my React learning and have quickly embraced it as my preferred way to write JavaScript for larger applications.
 
 ## Expertise Areas
 
 ### Type System
-- **Static Typing** - [Describe your experience]
-- **Interfaces & Types** - [Describe your experience]
-- **Generics** - [Describe your experience]
-- **Type Guards** - [Describe your experience]
+- **Static Typing** - Type-safe component props and function parameters
+- **Interfaces & Types** - Defining data structures and API contracts
+- **Type Inference** - Leveraging TypeScript's intelligent type detection
+- **Union & Intersection Types** - Flexible type combinations
 
-### Advanced Features
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
+### React with TypeScript
+- Typed React components and hooks
+- Type-safe props and state management
+- Custom hook typing
+- Event handler types
+
+### Next.js with TypeScript
+- Server and client component typing
+- API route type safety
+- Metadata and layout types
+- Type-safe routing
 
 ## Projects Using TypeScript
 
-### [Project Name]
-**Technologies**: TypeScript, [other tech]
-[Description of what you built and what you learned]
+### Portfolio Website
+**Technologies**: Next.js, React, TypeScript
+Built this entire portfolio application with TypeScript:
+- Type-safe component architecture
+- Typed content management system
+- API route type definitions
+- Full end-to-end type safety
 
-### [Project Name 2]
-**Technologies**: TypeScript, [other tech]
-[Description of what you built and what you learned]
-
-## Professional Experience
-
-### [Company Name]
-- [What you did with TypeScript]
-- [Achievement or impact]
-- [What you learned]
-
-## Coursework Applications
-
-### [Course Name]
-- [What you learned]
-- [Projects or assignments]
+### Personal Projects
+**Technologies**: React, Next.js, TypeScript
+Multiple hands-on projects using TypeScript:
+- Type-safe state management
+- Interface-driven development
+- Typed API integrations
 
 ## Certifications
 
-- [Certification name if any]
-
-## Code Examples
-
-### [Example Title]
-```typescript
-// Add your code example here
-```
+- **React - The Complete Guide 2025** (Udemy, September 2025) - Includes TypeScript with React
 
 ## Why I Love TypeScript
 
-[Explain what makes TypeScript valuable to you and your development workflow]
+TypeScript catches errors before runtime and makes my code more maintainable. The autocomplete and intellisense in VS Code is incredible when working with typed code. It's especially valuable in larger React applications where prop types and component interfaces can get complex.
 
 ## Current Focus
 
-- [What you're learning now]
-- [Goals for this skill]
+- Advanced TypeScript patterns
+- Generic types and utility types
+- Type-safe API design
+- TypeScript best practices in Next.js

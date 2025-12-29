@@ -52,6 +52,48 @@
       "status": "In Progress",
       "logo": "aws",
       "description": "Comprehensive AWS certification prep covering cloud architecture, services, and best practices"
+    },
+    {
+      "name": "Hands-On Essentials - Data Warehouse",
+      "issuer": "Snowflake",
+      "date": "2024",
+      "status": "Completed",
+      "logo": "snowflake",
+      "description": "Cloud data warehouse platform fundamentals, data modeling, warehouse architecture, and query optimization",
+      "whatLearned": [
+        "Cloud data warehouse platform fundamentals",
+        "Data modeling and warehouse architecture",
+        "Query optimization and performance tuning",
+        "Snowflake-specific features and capabilities",
+        "ETL processes and data transformation"
+      ],
+      "skills": [
+        "sql"
+      ],
+      "images": [
+        "snowflake-cert1.png"
+      ]
+    },
+    {
+      "name": "Collaboration & Marketing",
+      "issuer": "Snowflake",
+      "date": "2024",
+      "status": "Completed",
+      "logo": "snowflake",
+      "description": "Data sharing and collaboration features, marketing analytics, and cross-organizational data workflows",
+      "whatLearned": [
+        "Data sharing and collaboration features",
+        "Marketing analytics and insights",
+        "Cross-organizational data workflows",
+        "Secure data exchange between organizations",
+        "Data marketplace concepts"
+      ],
+      "skills": [
+        "sql"
+      ],
+      "images": [
+        "snowflake-cert2.png"
+      ]
     }
   ]
 }

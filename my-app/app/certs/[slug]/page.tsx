@@ -19,12 +19,14 @@ const certIcons: { [key: string]: string } = {
   'harvard': '🎓',
   'udemy': '📚',
   'aws': '☁️',
+  'snowflake': '❄️',
 };
 
 const certGradients: { [key: string]: string } = {
   'harvard': 'from-red-500/20 to-pink-500/20',
   'udemy': 'from-purple-500/20 to-blue-500/20',
   'aws': 'from-orange-500/20 to-yellow-500/20',
+  'snowflake': 'from-blue-300/20 to-blue-500/20',
 };
 
 export default async function CertDetailPage({ params }: { params: Promise<{ slug: string }> }) {

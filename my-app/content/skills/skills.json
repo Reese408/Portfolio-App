@@ -10,17 +10,17 @@
         },
         {
           "name": "TypeScript",
-          "level": "Advanced",
+          "level": "Intermediate",
           "icon": "typescript"
         },
         {
           "name": "Python",
-          "level": "Advanced",
+          "level": "Intermediate-Advanced",
           "icon": "python"
         },
         {
           "name": "Java",
-          "level": "Intermediate",
+          "level": "Intermediate-Advanced",
           "icon": "java"
         },
         {

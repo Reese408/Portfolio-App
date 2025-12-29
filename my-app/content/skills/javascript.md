@@ -3,14 +3,14 @@ name: JavaScript
 slug: javascript
 level: Advanced
 icon: ⚡
-yearsOfExperience: 4
+yearsOfExperience: 2+
 category: Languages
 color: from-yellow-500/20 to-orange-500/20
 ---
 
 # JavaScript
 
-JavaScript is my primary programming language and the foundation of my full-stack development skills. I've been working with JavaScript for over 4 years across various projects, from frontend interfaces to backend APIs.
+JavaScript is my primary programming language and the foundation of my full-stack development skills. I've been working with JavaScript since 2023, starting with CS50W and continuing through numerous web development projects. I'm highly proficient in both vanilla JavaScript and modern frameworks.
 
 ## Expertise Areas
 
@@ -35,41 +35,21 @@ JavaScript is my primary programming language and the foundation of my full-stac
 
 ## Projects Using JavaScript
 
-### GamingHub - Multiplayer Gaming Platform
-**Technologies**: Socket.io, Express.js, JavaScript
-Built a real-time multiplayer gaming platform with:
-- WebSocket communication for live gameplay
-- Game state management across multiple clients
-- Player matchmaking and lobby systems
-- Real-time chat functionality
+### Portfolio Website
+**Technologies**: Next.js, React, TypeScript, JavaScript
+Built a modern portfolio application featuring:
+- Dynamic routing for projects and skills
+- Server and client components
+- Framer Motion animations
+- Responsive design with Tailwind CSS
 
-### Workout Tracker App
-**Technologies**: React, JavaScript, Local Storage
-Created a comprehensive fitness tracking application:
-- Exercise logging with form validation
-- Progress charts using Chart.js
-- Local data persistence
-- Responsive mobile-first design
-
-### MARIE Simulator
-**Technologies**: Vanilla JavaScript, HTML5 Canvas
-Developed an educational assembly language simulator:
-- CPU cycle simulation
-- Memory management visualization
-- Instruction parsing and execution
-- Interactive debugging interface
-
-## Professional Experience
-
-### Techr2 - Full Stack Development Intern
-- Implemented JavaScript-based data validation for compliance workflows
-- Built interactive dashboards for data destruction tracking
-- Optimized frontend performance reducing load times by 40%
-
-### CNC Construction - Web Development
-- Created custom JavaScript solutions for project management
-- Integrated third-party APIs using fetch and async/await
-- Implemented client-side form validation
+### CS50W Projects
+**Technologies**: Vanilla JavaScript, Django
+Developed multiple full-stack web applications:
+- Single-page applications with vanilla JavaScript
+- RESTful API integrations
+- Dynamic, responsive interfaces
+- Real-time form validation
 
 ## Coursework Applications
 
@@ -78,45 +58,10 @@ Developed an educational assembly language simulator:
 - Implemented RESTful API integrations
 - Created dynamic, responsive web interfaces
 
-### Data Structures & Algorithms
-- Solved 50+ LeetCode problems using JavaScript
-- Implemented common algorithms (sorting, searching, graph traversal)
-- Optimized solutions for time and space complexity
-
 ## Certifications
 
-- **React - The Complete Guide** (Udemy) - Advanced React patterns and JavaScript best practices
-- **CS50W** (Harvard) - JavaScript for web development
-
-## Code Examples
-
-### Async Data Fetching with Error Handling
-```javascript
-async function fetchUserData(userId) {
-  try {
-    const response = await fetch(`/api/users/${userId}`);
-    if (!response.ok) throw new Error('User not found');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    throw error;
-  }
-}
-```
-
-### Event Delegation Pattern
-```javascript
-document.querySelector('.task-list').addEventListener('click', (e) => {
-  if (e.target.matches('.delete-btn')) {
-    const taskId = e.target.dataset.id;
-    deleteTask(taskId);
-  } else if (e.target.matches('.edit-btn')) {
-    const taskId = e.target.dataset.id;
-    editTask(taskId);
-  }
-});
-```
+- **React - The Complete Guide 2025** (Udemy, September 2025) - Advanced React patterns and JavaScript best practices
+- **CS50W** (Harvard) - Web programming with Python and JavaScript
 
 ## Why I Love JavaScript
 
