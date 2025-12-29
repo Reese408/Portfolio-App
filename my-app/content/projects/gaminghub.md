@@ -2,7 +2,7 @@
 title: "GamingHub"
 slug: "gaminghub"
 status: "Completed"
-tech: ["React", "Node.js", "MongoDB", "Socket.io"]
+tech: ["EJS", "Node.js", "MongoDB", "Socket.io"]
 github: "https://github.com/Reese408/GamingHub"
 demo: ""
 featured: true

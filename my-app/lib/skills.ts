@@ -1,1 +1,0 @@
-//use this to put skills related crap to render for your skills page using components

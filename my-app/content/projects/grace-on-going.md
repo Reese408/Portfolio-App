@@ -38,7 +38,7 @@ Grace On Going is a Christian apparel brand that needed a modern, fast, and user
 
 ## Technical Stack
 
-- **Frontend**: Next.js 14 with App Router, React, TypeScript
+- **Frontend**: Next.js 16 with App Router, React, TypeScript
 - **Styling**: Tailwind CSS for modern, responsive design
 - **E-Commerce**: Shopify integration for product and order management
 - **Hosting**: AWS for scalable cloud infrastructure
