@@ -24,14 +24,9 @@
           "icon": "java"
         },
         {
-          "name": "SQL",
+          "name": "SQL & Databases",
           "level": "Intermediate",
           "icon": "database"
-        },
-        {
-          "name": "HTML/CSS",
-          "level": "Advanced",
-          "icon": "html"
         }
       ]
     },
@@ -49,14 +44,14 @@
           "icon": "nextjs"
         },
         {
-          "name": "Redux",
+          "name": "HTML & CSS",
           "level": "Advanced",
-          "icon": "redux"
+          "icon": "html"
         },
         {
-          "name": "EJS",
-          "level": "Intermediate",
-          "icon": "ejs"
+          "name": "Tailwind CSS",
+          "level": "Intermediate-Advanced",
+          "icon": "tailwind"
         }
       ]
     },
@@ -82,7 +77,12 @@
           "name": "Socket.io",
           "level": "Intermediate",
           "icon": "socketio"
-        },
+        }
+      ]
+    },
+    {
+      "name": "Database",
+      "skills": [
         {
           "name": "PostgreSQL",
           "level": "Intermediate",
@@ -109,9 +109,19 @@
           "icon": "docker"
         },
         {
-          "name": "Git",
+          "name": "Git & GitHub",
           "level": "Advanced",
           "icon": "git"
+        },
+        {
+          "name": "GitHub Actions",
+          "level": "Intermediate",
+          "icon": "git"
+        },
+        {
+          "name": "AWS",
+          "level": "Intermediate",
+          "icon": "aws"
         },
         {
           "name": "Linux/Ubuntu",
@@ -133,15 +143,15 @@
         },
         {
           "name": "Data Structures",
-          "level": "Advanced"
+          "level": "Intermediate"
         },
         {
           "name": "System Design",
-          "level": "Intermediate"
+          "level": "Advanced"
         },
         {
           "name": "Cybersecurity Fundamentals",
-          "level": "Intermediate"
+          "level": "Advanced"
         },
         {
           "name": "Database Management",

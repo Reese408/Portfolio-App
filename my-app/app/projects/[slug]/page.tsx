@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 const projectImages: { [key: string]: string } = {
   'workout-app': '💪',
   'gaminghub': '🎮',
-  'marie-simulator': '💻',
+  'grace-on-going': '✝️',
   'cnc-construction': '🏗️',
 };
 

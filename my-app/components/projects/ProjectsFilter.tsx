@@ -12,14 +12,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 const projectImages: { [key: string]: string } = {
   'workout-app': '💪',
   'gaminghub': '🎮',
-  'marie-simulator': '💻',
+  'grace-on-going': '✝️',
   'cnc-construction': '🏗️',
 };
 
 const projectGradients: { [key: string]: string } = {
   'workout-app': 'from-blue-500/20 to-purple-500/20',
   'gaminghub': 'from-pink-500/20 to-red-500/20',
-  'marie-simulator': 'from-green-500/20 to-teal-500/20',
+  'grace-on-going': 'from-green-500/20 to-teal-500/20',
   'cnc-construction': 'from-orange-500/20 to-yellow-500/20',
 };
 

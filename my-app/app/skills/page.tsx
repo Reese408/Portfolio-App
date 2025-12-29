@@ -16,6 +16,7 @@ const skillIcons: { [key: string]: string } = {
   react: '⚛️',
   nextjs: '▲',
   redux: '🔄',
+  tailwind: '🎨',
   nodejs: '🟢',
   express: '🚂',
   django: '🎸',
@@ -61,7 +62,7 @@ export default function SkillPage() {
         </div>
 
         <Tabs defaultValue={skillsData.categories[0]?.name} className="space-y-8">
-          <TabsList className="grid w-full grid-cols-5 bg-white/50 backdrop-blur-sm">
+          <TabsList className="grid w-full grid-cols-6 bg-white/50 backdrop-blur-sm">
             {skillsData.categories.map((category) => (
               <TabsTrigger
                 key={category.name}
