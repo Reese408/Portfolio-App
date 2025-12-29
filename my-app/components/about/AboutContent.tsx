@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Resume } from '@/lib/types/content';
+import { miscMedia } from '@/lib/media';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -70,7 +71,7 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
               <div className="h-32 bg-linear-to-br from-[rgb(177,229,242)]/30 to-[rgb(206,206,206)]/30 relative">
                 <div className="absolute -bottom-12 left-8">
                   <Avatar className="w-24 h-24 border-4 border-white shadow-xl">
-                    <AvatarImage src="/ProfilePic.jpg" alt={resume.name} />
+                    <AvatarImage src={miscMedia.profilePic} alt={resume.name} />
                     <AvatarFallback className="text-3xl font-bold text-[rgb(39,38,53)] bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
                       {resume.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>

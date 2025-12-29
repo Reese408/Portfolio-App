@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Download, ArrowRight, Code2, Award, Briefcase, GraduationCap } from 'lucide-react';
+import { miscMedia } from '@/lib/media';
 
 export default function Home() {
   const resume = getResume();
@@ -22,7 +23,7 @@ export default function Home() {
             {/* Profile Picture */}
             <div className="mb-8 flex justify-center">
               <Avatar className="w-32 h-32 border-4 border-[rgb(177,229,242)] shadow-2xl">
-                <AvatarImage src="/ProfilePic.jpg" alt={resume.name} />
+                <AvatarImage src={miscMedia.profilePic} alt={resume.name} />
                 <AvatarFallback className="text-4xl font-bold text-[rgb(39,38,53)] bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
                   {resume.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
@@ -36,7 +37,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-6 text-[rgb(39,38,53)]">
-              Hi, I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-[rgb(177,229,242)] to-[rgb(206,206,206)]">{resume.name.split(' ')[0]}</span>
+              Hi, I'm <span className="text-[rgb(39,38,53)]">{resume.name.split(' ')[0]}</span>
             </h1>
             <p className="text-3xl font-semibold text-[rgb(39,38,53)]/80 mb-4">{resume.title}</p>
             <p className="text-lg text-[rgb(39,38,53)]/60 max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -72,7 +73,7 @@ export default function Home() {
                 variant="outline"
                 className="border-2 border-[rgb(39,38,53)] hover:bg-[rgb(39,38,53)]/10 text-lg px-8"
               >
-                <a href="/Resume_10_13.pdf" download>
+                <a href={miscMedia.resume} download>
                   <Download className="w-5 h-5 mr-2" />
                   Download CV
                 </a>
@@ -256,7 +257,7 @@ export default function Home() {
               variant="outline"
               className="border-2 border-white text-white hover:bg-white/10 text-lg px-8"
             >
-              <a href="/Resume_10_13.pdf" download>
+              <a href={miscMedia.resume} download>
                 <Download className="w-5 h-5 mr-2" />
                 Download Resume
               </a>

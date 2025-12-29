@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Github, ExternalLink, Code2 } from 'lucide-react';
+import { projectVideos } from '@/lib/media';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
@@ -112,9 +113,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <video
                 controls
                 className="w-full rounded-lg"
-                poster={`/projects/${project.slug}-poster.jpg`}
               >
-                <source src={`/projects/${project.video}`} type="video/mp4" />
+                <source src={projectVideos[project.video as keyof typeof projectVideos]} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </CardContent>

@@ -5,6 +5,7 @@ status: "In Progress"
 tech: ["Next.js", "Prisma", "React", "PostgreSQL", "TypeScript", "AWS S3"]
 github: "https://github.com/Reese408/WorkoutApp-3"
 demo: ""
+video: "workoutApp"
 featured: true
 order: 1
 ---

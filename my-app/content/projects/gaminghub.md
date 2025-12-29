@@ -5,6 +5,7 @@ status: "Completed"
 tech: ["EJS", "Node.js", "MongoDB", "Socket.io"]
 github: "https://github.com/Reese408/GamingHub"
 demo: ""
+video: "gamingHub"
 featured: true
 order: 2
 ---

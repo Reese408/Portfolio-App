@@ -5,6 +5,7 @@ status: "Completed"
 tech: ["Django", "JavaScript", "HTML/CSS", "SQLite"]
 github: "https://github.com/Reese408/CS293"
 demo: ""
+video: "cnc"
 featured: true
 order: 4
 ---
