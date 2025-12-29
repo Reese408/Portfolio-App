@@ -3,6 +3,8 @@ import { getAllProjects } from '@/lib/content/loader'
 import { getSkills } from '@/lib/content/loader'
 import { getCertifications } from '@/lib/content/loader'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.reeseredman.com'
 
