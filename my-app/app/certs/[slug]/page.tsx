@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Award, ExternalLink, CheckCircle2, Clock, AlertCircle, Code2, Lightbulb } from 'lucide-react';
+import { MEDIA_BASE } from '@/lib/media';
 
 export async function generateStaticParams() {
   const { certifications } = getCertifications();
@@ -168,7 +169,7 @@ export default async function CertDetailPage({ params }: { params: Promise<{ slu
                 {cert.images.map((image, index) => (
                   <div key={index} className="relative aspect-video rounded-lg overflow-hidden border-2 border-[rgb(177,229,242)]/30">
                     <Image
-                      src={`/certs/${image}`}
+                      src={`${MEDIA_BASE}/certs/${image}`}
                       alt={`${cert.name} - Image ${index + 1}`}
                       fill
                       className="object-cover"

@@ -3,7 +3,7 @@ title: "Grace, OnGoing"
 slug: "grace-on-going"
 status: "In Progress"
 tech: ["Next.js", "Shopify","React","AWS"]
-github: ""
+github: "https://github.com/Reese408/GOGE-Commerce.git"
 demo: ""
 featured: true
 order: 3

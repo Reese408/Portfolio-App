@@ -1,7 +1,7 @@
 ---
 name: SQL
 slug: sql
-level: Advanced
+level: Intermediate
 icon: 🗄️
 yearsOfExperience: 2
 category: Database

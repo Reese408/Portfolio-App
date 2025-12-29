@@ -10,6 +10,7 @@ import {
   MapPin,
   Github,
   Linkedin,
+  Instagram,
   Calendar,
   Briefcase,
   Code2,
@@ -23,6 +24,7 @@ import {
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Resume } from '@/lib/types/content';
+import { miscMedia } from '@/lib/media';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -97,6 +99,13 @@ export default function ContactContent({ resume }: ContactContentProps) {
       value: resume.links.linkedin.replace('https://', '').replace('www.', ''),
       href: resume.links.linkedin,
       color: 'from-blue-600/20 to-blue-400/20'
+    },
+    {
+      icon: Instagram,
+      label: 'Instagram',
+      value: 'instagram.com/reese.redman05',
+      href: 'https://www.instagram.com/reese.redman05/',
+      color: 'from-pink-500/20 to-purple-500/20'
     }
   ];
 
@@ -119,7 +128,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="mb-6 flex justify-center">
               <Avatar className="w-24 h-24 border-4 border-[rgb(177,229,242)] shadow-xl">
-                <AvatarImage src="/ProfilePic.jpg" alt={resume.name} />
+                <AvatarImage src={miscMedia.profilePic} alt={resume.name} />
                 <AvatarFallback className="text-3xl font-bold text-[rgb(39,38,53)] bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)]">
                   {resume.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
@@ -183,7 +192,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.div
                       key={index}

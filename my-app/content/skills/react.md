@@ -1,7 +1,7 @@
 ---
 name: React
 slug: react
-level: Intermediate
+level: Advanced
 icon: ⚛️
 yearsOfExperience: 1
 category: Frontend

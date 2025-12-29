@@ -1,5 +1,5 @@
 export const MEDIA_BASE =
-  "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com";
+  process.env.NEXT_PUBLIC_MEDIA_BASE_URL || 'https://reeses-portfolio-media.s3.us-east-2.amazonaws.com'
 
 /* =========================
    Project Demo Videos

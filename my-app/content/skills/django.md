@@ -1,7 +1,7 @@
 ---
 name: Django
 slug: django
-level: Advanced
+level: Intermediate
 icon: 🎸
 yearsOfExperience: 2
 category: Backend

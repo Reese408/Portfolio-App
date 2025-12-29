@@ -82,15 +82,15 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h1 className="text-4xl font-bold mb-2 text-[rgb(39,38,53)]">{resume.name}</h1>
-                    <p className="text-xl text-[rgb(177,229,242)] font-semibold mb-4">{resume.title}</p>
-                    <div className="flex flex-wrap gap-3 text-sm text-[rgb(39,38,53)]/70">
+                    <p className="text-xl text-blue-600 font-semibold mb-4">{resume.title}</p>
+                    <div className="flex flex-wrap gap-3 text-sm text-[rgb(39,38,53)]">
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-[rgb(177,229,242)]" />
-                        <span>{resume.location}</span>
+                        <MapPin className="w-4 h-4 text-blue-500" />
+                        <span className="font-medium">{resume.location}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-[rgb(177,229,242)]" />
-                        <a href={`mailto:${resume.email}`} className="hover:text-[rgb(177,229,242)] transition-colors">
+                        <Mail className="w-4 h-4 text-blue-500" />
+                        <a href={`mailto:${resume.email}`} className="hover:text-blue-600 transition-colors font-medium">
                           {resume.email}
                         </a>
                       </div>
@@ -128,14 +128,14 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
             <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-3xl text-[rgb(39,38,53)] flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)] flex items-center justify-center">
-                    <Users className="w-5 h-5 text-[rgb(39,38,53)]" />
+                  <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-white" />
                   </div>
                   About Me
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="prose prose-lg max-w-none text-[rgb(39,38,53)]/80 leading-relaxed space-y-4">
+                <div className="prose prose-lg max-w-none text-[rgb(39,38,53)] leading-relaxed space-y-4">
                   {intro.split('\n\n').map((paragraph, index) => (
                     <p key={index} className="text-base leading-relaxed">
                       {paragraph.replace(/\*\*(.*?)\*\*/g, '$1')}
@@ -143,24 +143,24 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                   ))}
                 </div>
 
-                <Separator className="my-6 bg-[rgb(177,229,242)]/30" />
+                <Separator className="my-6 bg-blue-200" />
 
                 {/* Skills Highlight */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-linear-to-br from-blue-500/10 to-cyan-500/10 rounded-lg">
-                    <Code2 className="w-8 h-8 mx-auto mb-2 text-[rgb(177,229,242)]" />
+                  <div className="text-center p-4 bg-linear-to-br from-blue-500/20 to-cyan-500/20 rounded-lg border-2 border-blue-200">
+                    <Code2 className="w-8 h-8 mx-auto mb-2 text-blue-600" />
                     <p className="text-sm font-semibold text-[rgb(39,38,53)]">Full-Stack Dev</p>
                   </div>
-                  <div className="text-center p-4 bg-linear-to-br from-purple-500/10 to-pink-500/10 rounded-lg">
-                    <Shield className="w-8 h-8 mx-auto mb-2 text-[rgb(177,229,242)]" />
+                  <div className="text-center p-4 bg-linear-to-br from-purple-500/20 to-pink-500/20 rounded-lg border-2 border-purple-200">
+                    <Shield className="w-8 h-8 mx-auto mb-2 text-purple-600" />
                     <p className="text-sm font-semibold text-[rgb(39,38,53)]">CyberSecurity</p>
                   </div>
-                  <div className="text-center p-4 bg-linear-to-br from-orange-500/10 to-yellow-500/10 rounded-lg">
-                    <Dumbbell className="w-8 h-8 mx-auto mb-2 text-[rgb(177,229,242)]" />
+                  <div className="text-center p-4 bg-linear-to-br from-orange-500/20 to-yellow-500/20 rounded-lg border-2 border-orange-200">
+                    <Dumbbell className="w-8 h-8 mx-auto mb-2 text-orange-600" />
                     <p className="text-sm font-semibold text-[rgb(39,38,53)]">Student-Athlete</p>
                   </div>
-                  <div className="text-center p-4 bg-linear-to-br from-green-500/10 to-teal-500/10 rounded-lg">
-                    <BookOpen className="w-8 h-8 mx-auto mb-2 text-[rgb(177,229,242)]" />
+                  <div className="text-center p-4 bg-linear-to-br from-green-500/20 to-teal-500/20 rounded-lg border-2 border-green-200">
+                    <BookOpen className="w-8 h-8 mx-auto mb-2 text-green-600" />
                     <p className="text-sm font-semibold text-[rgb(39,38,53)]">Lifelong Learner</p>
                   </div>
                 </div>
