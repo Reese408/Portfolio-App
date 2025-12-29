@@ -12,6 +12,7 @@ const skillIcons: { [key: string]: string } = {
   python: '🐍',
   java: '☕',
   sql: '🗄️',
+  database: '🗄️',
   html: '🌐',
   react: '⚛️',
   nextjs: '▲',

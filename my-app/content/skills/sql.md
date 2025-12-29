@@ -1,5 +1,5 @@
 ---
-name: SQL & Databases
+name: SQL
 slug: sql
 level: Advanced
 icon: 🗄️
@@ -25,7 +25,6 @@ SQL and database management are crucial components of my full-stack development 
 - **PostgreSQL** - My preferred database for production applications
 - **SQLite** - Lightweight databases for development and smaller apps
 - **MySQL** - Cross-platform database experience
-- **Snowflake** - Cloud data warehouse platform
 - **Database Migration** - Moving data between systems and environments
 
 ### Advanced Database Concepts
@@ -41,12 +40,6 @@ SQL and database management are crucial components of my full-stack development 
 - **Data Import/Export** - ETL processes and data transformation
 - **Database Backup & Recovery** - Data protection strategies
 - **Scaling Databases** - Performance optimization for growing applications
-
-### Data Warehousing
-- **Snowflake Platform** - Cloud data warehouse architecture and operations
-- **Data Analytics** - Large-scale data analysis and querying
-- **Data Modeling** - Dimensional modeling for analytics
-- **ETL Pipelines** - Data extraction, transformation, and loading
 
 ## Projects Using SQL
 
@@ -95,35 +88,14 @@ Hands-on experience with data migration:
 - Designed schemas for web applications
 - Implemented user authentication with database backends
 
-## Professional Experience
-
-### Techr2 - Full Stack Development Intern
-- Worked with databases for compliance tracking applications
-- Implemented data validation and storage solutions
-- Designed database schemas for application features
-- Optimized database queries for performance
-
-## Certifications
-
-- **Hands-On Essentials - Data Warehouse** (Snowflake)
-  - Cloud data warehouse platform fundamentals
-  - Data modeling and warehouse architecture
-  - Query optimization and performance
-
-- **Collaboration & Marketing** (Snowflake)
-  - Data sharing and collaboration features
-  - Marketing analytics and insights
-  - Cross-organizational data workflows
 
 ## Why I Love SQL & PostgreSQL
 
-PostgreSQL has become my go-to database because of its reliability, powerful features, and excellent performance. I love the precision and logic of SQL - designing an efficient database schema and writing optimized queries feels like solving puzzles. Understanding how to properly structure and query data has been fundamental to building robust applications. The experience of migrating data from on-premise to cloud solutions taught me how databases work at an infrastructure level, making me confident deploying and managing databases in any environment. Expanding into data warehousing with Snowflake has opened up new perspectives on large-scale data analytics and cloud-native database solutions.
+PostgreSQL has become my go-to database because of its reliability, powerful features, and excellent performance. I love the precision and logic of SQL - designing an efficient database schema and writing optimized queries feels like solving puzzles. Understanding how to properly structure and query data has been fundamental to building robust applications. The experience of migrating data from on-premise to cloud solutions taught me how databases work at an infrastructure level, making me confident deploying and managing databases in any environment.
 
 ## Current Focus
 
 - Advanced PostgreSQL features and optimization
-- Database performance tuning and monitoring
 - Cloud database architectures and best practices
-- Snowflake data warehouse optimization
-- Data analytics and dimensional modeling
+- Data warehouse concepts and analytics
 - Database security and access control

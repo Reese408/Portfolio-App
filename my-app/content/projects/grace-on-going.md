@@ -1,5 +1,5 @@
 ---
-title: "GraceOnGoing"
+title: "Grace, OnGoing"
 slug: "grace-on-going"
 status: "In Progress"
 tech: ["Next.js", "Shopify","React","AWS"]
