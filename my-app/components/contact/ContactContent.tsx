@@ -155,7 +155,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
                     {method.href ? (
                       <a
                         href={method.href}
-                        className="text-[rgb(177,229,242)] hover:text-[rgb(177,229,242)]/80 font-medium transition-colors"
+                        className="text-[rgb(39,38,53)]/70 hover:text-[rgb(39,38,53)] font-medium transition-colors"
                       >
                         {method.value}
                       </a>
