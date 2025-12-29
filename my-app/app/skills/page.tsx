@@ -27,6 +27,7 @@ const skillIcons: { [key: string]: string } = {
   sqlite: '💾',
   docker: '🐳',
   git: '📦',
+  actions: '⚙️',
   linux: '🐧',
   aws: '☁️',
 };
