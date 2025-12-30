@@ -23,16 +23,16 @@ export default function CertificationsPage() {
   const { certifications } = getCertifications();
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Certifications & Courses</h1>
-          <p className="text-xl text-[rgb(39,38,53)]/70">
+    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Certifications & Courses</h1>
+          <p className="text-lg sm:text-xl text-[rgb(39,38,53)]/70">
             Continuous learning and professional development
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {certifications.map((cert, index) => {
             const slug = cert.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
             return (

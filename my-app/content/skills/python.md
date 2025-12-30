@@ -21,12 +21,6 @@ Python has been a core part of my programming toolkit since 2020-2021 when I fir
 - **Database Integration** - SQLite, PostgreSQL, MySQL
 - **Authentication & Authorization** - User management systems
 
-### Data Structures & Algorithms
-- **Algorithm Implementation** - Sorting, searching, graph algorithms
-- **Data Structure Design** - Custom implementations of lists, trees, graphs
-- **Problem Solving** - LeetCode and competitive programming
-- **Time/Space Complexity Analysis** - Optimization and efficiency
-
 ### Machine Learning & Data Science
 - Machine learning algorithms and model training
 - Data analysis and visualization
@@ -37,7 +31,6 @@ Python has been a core part of my programming toolkit since 2020-2021 when I fir
 - Security tools and scripts
 - Vulnerability analysis
 - Penetration testing utilities
-- Network security implementations
 
 ## Projects Using Python
 
@@ -77,11 +70,8 @@ Built a full-featured web application for my employer:
 
 ## Why I Love Python
 
-Python's readability and extensive standard library make it incredibly versatile. From building web applications with Django to implementing machine learning algorithms and developing cybersecurity tools, Python has been my go-to language for diverse applications. Its clean syntax and powerful ecosystem allow me to focus on solving problems effectively.
+Python's readability and extensive standard library make it perfect for rapid development. Whether I'm building a web application, analyzing data, or automating repetitive tasks, Python's "batteries included" philosophy means I can focus on solving problems rather than reinventing the wheel. The Django framework has been particularly powerful for building production-ready applications quickly.
 
 ## Current Focus
 
-- Advanced machine learning techniques
-- Django optimization and best practices
-- Cybersecurity applications and tools
-- Advanced algorithms and data structures
+- Machine learning with scikit-learn

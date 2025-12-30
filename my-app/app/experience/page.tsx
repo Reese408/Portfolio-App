@@ -19,16 +19,16 @@ export default function ExperiencePage() {
   const resume = getResume();
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Work Experience</h1>
-          <p className="text-xl text-[rgb(39,38,53)]/70">
+    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Work Experience</h1>
+          <p className="text-lg sm:text-xl text-[rgb(39,38,53)]/70">
             My professional journey and key accomplishments
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {resume.experience.map((exp, index) => {
             const slug = exp.company.toLowerCase().replace(/\s+/g, '-');
             return (

@@ -54,27 +54,29 @@ export default function SkillPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-12">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Technical Skills</h1>
-          <p className="text-xl text-[rgb(39,38,53)]/70">
+    <div className="min-h-screen bg-gradient-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[rgb(39,38,53)]">Technical Skills</h1>
+          <p className="text-lg sm:text-xl text-[rgb(39,38,53)]/70">
             My technical expertise and proficiency levels
           </p>
         </div>
 
-        <Tabs defaultValue={skillsData.categories[0]?.name} className="space-y-8">
-          <TabsList className="grid w-full grid-cols-6 bg-white/50 backdrop-blur-sm">
-            {skillsData.categories.map((category) => (
-              <TabsTrigger
-                key={category.name}
-                value={category.name}
-                className="data-[state=active]:bg-[rgb(177,229,242)] data-[state=active]:text-[rgb(39,38,53)]"
-              >
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <Tabs defaultValue={skillsData.categories[0]?.name} className="space-y-6 sm:space-y-8">
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+            <TabsList className="inline-flex sm:grid w-full sm:grid-cols-3 md:grid-cols-6 bg-white/50 backdrop-blur-sm min-w-max sm:min-w-0">
+              {skillsData.categories.map((category) => (
+                <TabsTrigger
+                  key={category.name}
+                  value={category.name}
+                  className="data-[state=active]:bg-[rgb(177,229,242)] data-[state=active]:text-[rgb(39,38,53)] whitespace-nowrap text-xs sm:text-sm px-3 sm:px-4"
+                >
+                  {category.name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           {skillsData.categories.map((category) => (
             <TabsContent key={category.name} value={category.name} className="space-y-6">
@@ -143,20 +145,20 @@ export default function SkillPage() {
 
         {/* Soft Skills Section */}
         {skillsData.softSkills && skillsData.softSkills.length > 0 && (
-          <Card className="mt-12 bg-gradient-to-r from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20 border-2 border-[rgb(177,229,242)]">
+          <Card className="mt-8 sm:mt-12 bg-gradient-to-r from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20 border-2 border-[rgb(177,229,242)]">
             <CardHeader>
-              <CardTitle className="text-3xl text-[rgb(39,38,53)]">Soft Skills</CardTitle>
+              <CardTitle className="text-2xl sm:text-3xl text-[rgb(39,38,53)]">Soft Skills</CardTitle>
               <CardDescription className="text-[rgb(39,38,53)]/70">
                 Essential professional competencies
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {skillsData.softSkills.map((skill, index) => (
                   <Badge
                     key={index}
                     variant="secondary"
-                    className="px-4 py-2 text-base bg-white hover:bg-[rgb(177,229,242)] hover:text-[rgb(39,38,53)] transition-all duration-200 cursor-default"
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base bg-white hover:bg-[rgb(177,229,242)] hover:text-[rgb(39,38,53)] transition-all duration-200 cursor-default"
                   >
                     {skill}
                   </Badge>

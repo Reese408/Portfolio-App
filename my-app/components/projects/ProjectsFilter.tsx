@@ -38,7 +38,7 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
     <>
       {/* Filter Buttons */}
       <motion.div
-        className="flex justify-center gap-3 mb-12"
+        className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -46,21 +46,21 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
         <Button
           onClick={() => setFilter('all')}
           variant={filter === 'all' ? 'default' : 'outline'}
-          className={filter === 'all' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80' : ''}
+          className={filter === 'all' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
           All Projects
         </Button>
         <Button
           onClick={() => setFilter('Completed')}
           variant={filter === 'Completed' ? 'default' : 'outline'}
-          className={filter === 'Completed' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80' : ''}
+          className={filter === 'Completed' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
           Completed
         </Button>
         <Button
           onClick={() => setFilter('In Progress')}
           variant={filter === 'In Progress' ? 'default' : 'outline'}
-          className={filter === 'In Progress' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80' : ''}
+          className={filter === 'In Progress' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
           In Progress
         </Button>
@@ -68,7 +68,7 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
 
       {/* Projects Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
         layout
       >
         <AnimatePresence mode="popLayout">
