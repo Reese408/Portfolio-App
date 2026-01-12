@@ -21,40 +21,9 @@ import {
   MessageSquare,
   ExternalLink
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Resume } from '@/lib/types/content';
 import { miscMedia } from '@/lib/media';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
-
-const cardHoverVariants = {
-  hover: {
-    scale: 1.02,
-    transition: {
-      duration: 0.2
-    }
-  }
-};
 
 interface ContactContentProps {
   resume: Resume;
@@ -119,13 +88,9 @@ export default function ContactContent({ resume }: ContactContentProps) {
   return (
     <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] via-[rgb(206,206,206)] to-[rgb(177,229,242)] py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
+        <div>
           {/* Hero Section */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
+          <div className="text-center mb-12">
             <div className="mb-6 flex justify-center">
               <Avatar className="w-24 h-24 border-4 border-[rgb(177,229,242)] shadow-xl">
                 <AvatarImage src={miscMedia.profilePic} alt={resume.name} />
@@ -141,17 +106,13 @@ export default function ContactContent({ resume }: ContactContentProps) {
               I'm always interested in hearing about new opportunities, projects, or just connecting
               with fellow developers. Feel free to reach out!
             </p>
-          </motion.div>
+          </div>
 
           {/* Contact Information Grid */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {contactMethods.map((method, index) => (
-              <motion.div
-                key={index}
-                variants={cardHoverVariants}
-                whileHover="hover"
-              >
-                <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm h-full">
+              <div key={index}>
+                <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-200 bg-white/90 backdrop-blur-sm h-full hover:shadow-lg">
                   <CardHeader>
                     <div className={`w-12 h-12 rounded-full bg-linear-to-br ${method.color} flex items-center justify-center mb-3 mx-auto`}>
                       <method.icon className="w-6 h-6 text-[rgb(177,229,242)]" />
@@ -164,7 +125,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
                     {method.href ? (
                       <a
                         href={method.href}
-                        className="text-[rgb(39,38,53)]/70 hover:text-[rgb(39,38,53)] font-medium transition-colors"
+                        className="text-[rgb(39,38,53)]/70 hover:text-[rgb(39,38,53)] font-medium transition-colors duration-200"
                       >
                         {method.value}
                       </a>
@@ -173,13 +134,13 @@ export default function ContactContent({ resume }: ContactContentProps) {
                     )}
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm">
+          <div className="mb-8">
+            <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-200 bg-white/90 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl text-[rgb(39,38,53)] flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-linear-to-br from-[rgb(177,229,242)] to-[rgb(206,206,206)] flex items-center justify-center">
@@ -194,13 +155,8 @@ export default function ContactContent({ resume }: ContactContentProps) {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {socialLinks.map((social, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className={`border-l-4 border-[rgb(177,229,242)] hover:shadow-lg transition-all duration-300 bg-linear-to-br ${social.color}`}>
+                    <div key={index}>
+                      <Card className={`border-l-4 border-[rgb(177,229,242)] hover:shadow-lg transition-all duration-200 bg-linear-to-br ${social.color}`}>
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
@@ -215,7 +171,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
                                   href={social.href}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-[rgb(39,38,53)] hover:text-[rgb(177,229,242)] font-semibold transition-colors flex items-center gap-1"
+                                  className="text-[rgb(39,38,53)] hover:text-[rgb(177,229,242)] font-semibold transition-colors duration-200 flex items-center gap-1"
                                 >
                                   {social.value}
                                   <ExternalLink className="w-3 h-3" />
@@ -225,15 +181,15 @@ export default function ContactContent({ resume }: ContactContentProps) {
                           </div>
                         </CardContent>
                       </Card>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Opportunities Section */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="mb-8">
             <Card className="border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm overflow-hidden">
               <div className="h-2 bg-linear-to-r from-[rgb(177,229,242)] to-[rgb(206,206,206)]" />
               <CardHeader>
@@ -250,16 +206,13 @@ export default function ContactContent({ resume }: ContactContentProps) {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   {opportunities.map((opp, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 p-4 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 rounded-lg hover:shadow-md transition-all"
+                      className="flex items-center gap-3 p-4 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 rounded-lg hover:shadow-md transition-all duration-200"
                     >
                       <opp.icon className={`w-6 h-6 ${opp.color}`} />
                       <span className="font-semibold text-[rgb(39,38,53)]">{opp.label}</span>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -271,10 +224,10 @@ export default function ContactContent({ resume }: ContactContentProps) {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* CTA Section */}
-          <motion.div variants={itemVariants}>
+          <div>
             <Card className="bg-linear-to-r from-[rgb(39,38,53)] to-[rgb(39,38,53)]/90 border-2 border-[rgb(177,229,242)]">
               <CardContent className="py-8 text-center">
                 <Send className="w-12 h-12 mx-auto mb-4 text-[rgb(177,229,242)]" />
@@ -307,8 +260,8 @@ export default function ContactContent({ resume }: ContactContentProps) {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

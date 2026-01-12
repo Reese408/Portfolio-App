@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   keywords: ["Full Stack Developer", "React", "Next.js", "TypeScript", "Web Development", "Cloud Engineering", "CyberSecurity", "DevSecOps"],
   authors: [{ name: "Reese Redman" }],
   creator: "Reese Redman",
+  icons: {
+    icon: '/portfolio-icon.png',
+    shortcut: '/portfolio-icon.png',
+    apple: '/portfolio-icon.png',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Github, ExternalLink, Code2 } from 'lucide-react';
 import { Project } from '@/lib/types/content';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const projectImages: { [key: string]: string } = {
   'workout-app': '💪',
@@ -37,12 +36,7 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
   return (
     <>
       {/* Filter Buttons */}
-      <motion.div
-        className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4">
         <Button
           onClick={() => setFilter('all')}
           variant={filter === 'all' ? 'default' : 'outline'}
@@ -64,43 +58,19 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
         >
           In Progress
         </Button>
-      </motion.div>
+      </div>
 
       {/* Projects Grid */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
-        layout
-      >
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.slug}
-              layout
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: -50 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-            >
-              <Card className="group overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm h-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          {filteredProjects.map((project) => (
+            <div key={project.slug}>
+              <Card className="group overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-200 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm h-full">
                 {/* Project Icon/Image Header */}
-                <motion.div
-                  className={`h-32 bg-linear-to-br ${projectGradients[project.slug] || 'from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20'} flex items-center justify-center relative overflow-hidden`}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute inset-0 bg-[rgb(39,38,53)]/5 group-hover:bg-[rgb(39,38,53)]/10 transition-colors" />
-                  <motion.span
-                    className="text-7xl relative z-10"
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
+                <div className={`h-32 bg-linear-to-br ${projectGradients[project.slug] || 'from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20'} flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-[rgb(39,38,53)]/5 group-hover:bg-[rgb(39,38,53)]/10 transition-colors duration-200" />
+                  <span className="text-7xl relative z-10 group-hover:scale-110 transition-transform duration-200">
                     {projectImages[project.slug] || '📦'}
-                  </motion.span>
+                  </span>
                   <Badge
                     className={`absolute top-4 right-4 ${
                       project.status === 'Completed'
@@ -110,10 +80,10 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                   >
                     {project.status}
                   </Badge>
-                </motion.div>
+                </div>
 
                 <CardHeader>
-                  <CardTitle className="text-2xl text-[rgb(39,38,53)] group-hover:text-[rgb(177,229,242)] transition-colors">
+                  <CardTitle className="text-2xl text-[rgb(39,38,53)] group-hover:text-[rgb(177,229,242)] transition-colors duration-200">
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-[rgb(39,38,53)]/60">
@@ -124,20 +94,14 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIndex) => (
-                      <motion.div
+                      <Badge
                         key={techIndex}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 + techIndex * 0.05 }}
+                        variant="secondary"
+                        className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/40 transition-colors duration-200"
                       >
-                        <Badge
-                          variant="secondary"
-                          className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/40 transition-colors"
-                        >
-                          <Code2 className="w-3 h-3 mr-1" />
-                          {tech}
-                        </Badge>
-                      </motion.div>
+                        <Code2 className="w-3 h-3 mr-1" />
+                        {tech}
+                      </Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -187,22 +151,16 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                   )}
                 </CardFooter>
               </Card>
-            </motion.div>
+            </div>
           ))}
-        </AnimatePresence>
-      </motion.div>
+      </div>
 
       {filteredProjects.length === 0 && (
-        <motion.div
-          className="text-center py-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="text-center py-12">
           <p className="text-xl text-[rgb(39,38,53)]/60">
             No projects found in this category.
           </p>
-        </motion.div>
+        </div>
       )}
     </>
   );
