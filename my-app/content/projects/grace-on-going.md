@@ -1,69 +1,96 @@
 ---
 title: "Grace, OnGoing"
 slug: "grace-on-going"
-status: "In Progress"
-tech: ["Next.js", "Shopify","React","AWS"]
+status: "Live"
+tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Shopify", "GraphQL", "Zustand", "React Query", "AWS S3", "Vercel"]
 github: "https://github.com/Reese408/GOGE-Commerce.git"
-demo: ""
+demo: "https://graceongoing.com"
 featured: true
 order: 3
 ---
 
-# Grace On Going
+# Grace, Ongoing
 
-A modern e-commerce platform for a Christian apparel brand, built with Next.js and integrated with Shopify. This project combines faith-based messaging with contemporary web design to create an engaging online shopping experience.
+A headless e-commerce storefront for a Christian apparel brand, built with Next.js 16 and Shopify's Storefront API.
 
-## Project Overview
+**Live Site:** [graceongoing.com](https://graceongoing.com)
 
-Grace On Going is a Christian apparel brand that needed a modern, fast, and user-friendly e-commerce platform. The project focuses on creating a seamless shopping experience while maintaining the brand's faith-based identity and message.
+## Tech Stack
+
+- **Frontend:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling:** Tailwind CSS 4 with dark mode support
+- **State:** Zustand (cart) + React Query (API caching)
+- **Backend:** Shopify Storefront API (GraphQL), Resend (email)
+- **Infrastructure:** Vercel, AWS S3
 
 ## Key Features
 
-### E-Commerce Integration
-- **Shopify Integration** - Seamless connection with Shopify for product management and checkout
-- **Product Catalog** - Dynamic product listings with filtering and search
-- **Shopping Cart** - Real-time cart management and updates
-- **Checkout Flow** - Secure and streamlined checkout process
+### E-Commerce
+- Full product catalog with variant selection, real-time inventory, and persistent cart
+- Fuzzy search powered by Fuse.js
+- Shopify-hosted checkout with automatic redirect
 
-### Modern Web Experience
-- **Next.js App Router** - Server-side rendering for optimal performance
-- **Responsive Design** - Mobile-first design that works across all devices
-- **Fast Loading** - Optimized images and performance for quick page loads
-- **SEO Optimized** - Search engine optimization for better discoverability
+### Performance
+- React Server Components for fast initial loads and SEO
+- ISR with 60-second revalidation for product data
+- Native CSS animations (removed Framer Motion, reduced INP by 84%)
+- Optimized images via Next.js with AVIF/WebP formats
 
-### Brand Identity
-- **Christian Messaging** - Faith-based content and messaging throughout
-- **Modern Design** - Contemporary aesthetics that appeal to younger audiences
-- **Brand Consistency** - Cohesive visual identity across all pages
+### Developer Experience
+- Strict TypeScript throughout
+- Structured data (JSON-LD) for product SEO
+- Dynamic sitemap generation
+- Content Security Policy headers
 
-## Technical Stack
+## Performance Results
 
-- **Frontend**: Next.js 16 with App Router, React, TypeScript
-- **Styling**: Tailwind CSS for modern, responsive design
-- **E-Commerce**: Shopify integration for product and order management
-- **Hosting**: AWS for scalable cloud infrastructure
-- **Performance**: Image optimization, lazy loading, and caching strategies
+| Metric | Improvement |
+|--------|-------------|
+| INP (Shop page) | 2552ms → 400ms (84% reduction) |
+| Bundle size | Removed 3.3MB from critical path |
+| Lighthouse Performance | 95+ |
 
-## Development Highlights
+## System Design
+
+### Hosting & Deployment
+- Vercel for hosting with automatic CI/CD from GitHub pushes
+- Vercel Analytics and Speed Insights for Web Vitals monitoring
+- Squarespace domain with DNS pointed to Vercel
+
+### Media Storage
+- AWS S3 bucket for product images and videos
+- Next.js Image component optimizes S3 assets on-the-fly (AVIF/WebP conversion, responsive sizing)
+- Cloudflare in front of S3 for CDN caching and reduced latency
+
+### Email Infrastructure
+- Resend handles transactional emails from the contact form
+- Email forwarding configured so `support@graceongoing.com` routes to business inbox
+- Server-side API route keeps credentials secure
 
 ### Shopify Integration
-Implemented comprehensive Shopify integration to manage products, inventory, and orders while maintaining a custom frontend experience that aligns with the brand's identity.
+- Headless setup: Shopify manages inventory, payments, and fulfillment—Next.js handles the storefront
+- GraphQL queries fetch products, variants, pricing, and real-time stock levels
+- Cart state lives client-side (Zustand + localStorage); checkout redirects to Shopify's hosted checkout
+- No Shopify theme code—full control over UI/UX while Shopify handles the hard parts
 
-### AWS Deployment
-Deployed the application on AWS infrastructure for reliability, scalability, and global performance, ensuring customers have a fast shopping experience regardless of location.
+## Technical Highlights
 
-### User Experience
-Focused on creating an intuitive shopping experience with clear navigation, fast loading times, and a streamlined checkout process that encourages conversions.
+### Performance Optimization
+Achieved an 84% reduction in INP (Interaction to Next Paint) by replacing Framer Motion with native CSS animations. This removed 3.3MB from the critical rendering path and improved the Shop page INP from 2552ms to 400ms, resulting in a significantly more responsive user experience.
 
-## Current Status
+### Headless Architecture
+Implemented a fully headless e-commerce solution that separates the frontend from Shopify's backend. This architecture provides complete control over the user interface while leveraging Shopify's robust e-commerce infrastructure for inventory management, payments, and order fulfillment.
 
-The project is actively in development, with ongoing work on:
-- Enhancing Shopify integration features
-- Optimizing performance and load times
-- Adding new product categories and collections
-- Improving mobile experience
-- Implementing analytics and tracking
+### Intelligent Caching Strategy
+Utilized ISR (Incremental Static Regeneration) with 60-second revalidation intervals to balance fresh product data with optimal performance. Combined with React Query for client-side API caching, ensuring users see up-to-date information without sacrificing speed.
+
+### Modern Image Optimization
+Leveraged Next.js Image component to automatically convert and serve images in modern formats (AVIF/WebP) with responsive sizing. S3-hosted assets are optimized on-the-fly and cached via Cloudflare CDN for minimal latency globally.
 
 ## Impact
 
-Building a platform that combines modern e-commerce capabilities with faith-based messaging, helping Grace On Going reach customers and share their message through quality apparel and a great online experience.
+Built a production e-commerce platform that combines faith-based messaging with modern web performance. The site handles real-world traffic while maintaining 95+ Lighthouse scores, demonstrating that excellent UX and fast load times are achievable even with complex e-commerce functionality.
+
+---
+
+**[View Live Site](https://www.graceongoing.com)** | **[GitHub Repository](https://github.com/Reese408/GOGE-Commerce.git)**

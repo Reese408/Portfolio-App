@@ -30,6 +30,7 @@ const skillIcons: { [key: string]: string } = {
   actions: '⚙️',
   linux: '🐧',
   aws: '☁️',
+  vercel: '▲',
 };
 
 export default function SkillPage() {

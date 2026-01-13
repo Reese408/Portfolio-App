@@ -1,5 +1,3 @@
-'use client';
-
 import NavigationBar from "./Navigation";
 
 export default function Header(){

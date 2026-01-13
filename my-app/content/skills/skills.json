@@ -124,6 +124,11 @@
           "icon": "aws"
         },
         {
+          "name": "Vercel",
+          "level": "Intermediate-Advanced",
+          "icon": "vercel"
+        },
+        {
           "name": "Linux/Ubuntu",
           "level": "Advanced",
           "icon": "linux"

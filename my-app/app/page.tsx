@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { getResume, getFeaturedProjects, getCertifications } from '@/lib/content/loader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,20 @@ export default function Home() {
   const resume = getResume();
   const featuredProjects = getFeaturedProjects();
   const { certifications } = getCertifications();
-  const activeCerts = certifications.filter(c => c.status === 'Completed');
+
+  // Memoize filtering operation
+  const activeCerts = useMemo(() =>
+    certifications.filter(c => c.status === 'Completed'),
+    [certifications]
+  );
+
+  // Memoize stats array to prevent recreation on every render
+  const stats = useMemo(() => [
+    { id: 'projects', icon: Code2, value: featuredProjects.length, label: 'Projects', color: 'from-blue-500/20 to-cyan-500/20' },
+    { id: 'internships', icon: Briefcase, value: resume.experience.length, label: 'Internships', color: 'from-purple-500/20 to-pink-500/20' },
+    { id: 'certifications', icon: GraduationCap, value: activeCerts.length, label: 'Certifications', color: 'from-orange-500/20 to-yellow-500/20' },
+    { id: 'awards', icon: Award, value: resume.awards.length, label: 'Awards', color: 'from-green-500/20 to-teal-500/20' },
+  ], [featuredProjects.length, resume.experience.length, resume.awards.length, activeCerts.length]);
 
   return (
     <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] via-[rgb(206,206,206)] to-[rgb(177,229,242)]">
@@ -121,13 +135,8 @@ export default function Home() {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[
-              { icon: Code2, value: featuredProjects.length, label: 'Projects', color: 'from-blue-500/20 to-cyan-500/20' },
-              { icon: Briefcase, value: resume.experience.length, label: 'Internships', color: 'from-purple-500/20 to-pink-500/20' },
-              { icon: GraduationCap, value: activeCerts.length, label: 'Certifications', color: 'from-orange-500/20 to-yellow-500/20' },
-              { icon: Award, value: resume.awards.length, label: 'Awards', color: 'from-green-500/20 to-teal-500/20' },
-            ].map((stat, index) => (
-              <Card key={index} className="text-center border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] hover:-translate-y-1 transition-all duration-300 bg-white/80 backdrop-blur-sm">
+            {stats.map((stat) => (
+              <Card key={stat.id} className="text-center border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] hover:-translate-y-1 transition-all duration-300 bg-white/80 backdrop-blur-sm">
                 <CardContent className="pt-6">
                   <div className={`w-12 h-12 rounded-full bg-linear-to-br ${stat.color} flex items-center justify-center mx-auto mb-3`}>
                     <stat.icon className="w-6 h-6 text-[rgb(39,38,53)]" />
@@ -166,8 +175,8 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 4).map((tech, index) => (
-                      <Badge key={index} variant="secondary" className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)]">
+                    {project.tech.slice(0, 4).map((tech) => (
+                      <Badge key={`${project.slug}-${tech}`} variant="secondary" className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)]">
                         {tech}
                       </Badge>
                     ))}
@@ -209,9 +218,9 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {resume.awards.map((award, index) => (
+            {resume.awards.map((award) => (
               <Card
-                key={index}
+                key={`award-${award.name}-${award.date}`}
                 className="border-l-4 border-[rgb(177,229,242)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/80"
               >
                 <CardHeader>

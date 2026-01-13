@@ -1,6 +1,6 @@
 {
   "name": "Reese Redman",
-  "title": "Computer Science & CyberSecurity Student",
+  "title": "Computer Science & Cyber Security Student",
   "email": "reeseredman099@gmail.com",
   "phone": "440-645-1162",
   "location": "Newark, Ohio",
@@ -23,9 +23,10 @@
         "Computer Architecture",
         "Operating Systems",
         "Linux Security",
-        "Linear Algebra",
-        "Discrete Mathematics",
-        "Database Management"
+        "Database Management",
+        "Software Development",
+        "Advance Programming",
+          "Computer Algorithms"
       ]
     }
   ],
