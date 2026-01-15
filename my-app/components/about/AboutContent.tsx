@@ -1,12 +1,12 @@
 'use client';
 
+import { useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   GraduationCap,
   Award,
@@ -22,30 +22,8 @@ import {
   Calendar,
   Trophy
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { Resume } from '@/lib/types/content';
 import { miscMedia } from '@/lib/media';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
 
 interface AboutContentProps {
   aboutContent: string;
@@ -53,20 +31,23 @@ interface AboutContentProps {
 }
 
 export default function AboutContent({ aboutContent, resume }: AboutContentProps) {
-  // Parse markdown content into sections
-  const sections = aboutContent.split('##').filter(s => s.trim());
-  const intro = sections[0]?.split('\n').filter(line => line.trim() && !line.startsWith('#')).join('\n') || '';
+  // Memoize expensive content parsing operations
+  const { paragraphs } = useMemo(() => {
+    const parsedSections = aboutContent.split('##').filter(s => s.trim());
+    const parsedIntro = parsedSections[0]?.split('\n').filter(line => line.trim() && !line.startsWith('#')).join('\n') || '';
+    const parsedParagraphs = parsedIntro.split('\n\n').map(p => p.replace(/\*\*(.*?)\*\*/g, '$1'));
+
+    return {
+      paragraphs: parsedParagraphs
+    };
+  }, [aboutContent]);
 
   return (
     <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] via-[rgb(206,206,206)] to-[rgb(177,229,242)] py-12">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
+        <div className="animate-fade-in-up">
           {/* Hero Section */}
-          <motion.div variants={itemVariants}>
+          <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
               <div className="h-32 bg-linear-to-br from-[rgb(177,229,242)]/30 to-[rgb(206,206,206)]/30 relative">
                 <div className="absolute -bottom-12 left-8">
@@ -121,10 +102,10 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* About Me Section */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-3xl text-[rgb(39,38,53)] flex items-center gap-3">
@@ -136,9 +117,9 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
               </CardHeader>
               <CardContent>
                 <div className="prose prose-lg max-w-none text-[rgb(39,38,53)] leading-relaxed space-y-4">
-                  {intro.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-base leading-relaxed">
-                      {paragraph.replace(/\*\*(.*?)\*\*/g, '$1')}
+                  {paragraphs.map((paragraph, index) => (
+                    <p key={`paragraph-${index}`} className="text-base leading-relaxed">
+                      {paragraph}
                     </p>
                   ))}
                 </div>
@@ -166,10 +147,10 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Education Section */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-3xl text-[rgb(39,38,53)] flex items-center gap-3">
@@ -181,12 +162,10 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
               </CardHeader>
               <CardContent className="space-y-6">
                 {resume.education.map((edu, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    className="group"
+                  <div
+                    key={`education-${edu.school}-${index}`}
+                    className="group animate-slide-in-left"
+                    style={{ animationDelay: `${0.4 + index * 0.1}s` }}
                   >
                     <Card className="border-l-4 border-[rgb(177,229,242)] hover:shadow-lg transition-all duration-300 bg-white/50">
                       <CardHeader>
@@ -218,7 +197,7 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                           <div className="flex flex-wrap gap-2">
                             {edu.relevantCoursework.map((course, courseIndex) => (
                               <Badge
-                                key={courseIndex}
+                                key={`course-${course}-${courseIndex}`}
                                 variant="secondary"
                                 className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)]"
                               >
@@ -229,15 +208,15 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                         </CardContent>
                       )}
                     </Card>
-                  </motion.div>
+                  </div>
                 ))}
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Awards Section */}
-            <motion.div variants={itemVariants}>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[rgb(39,38,53)] flex items-center gap-3">
@@ -249,12 +228,10 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {resume.awards.map((award, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.15 }}
-                      className="border-l-4 border-[rgb(177,229,242)] pl-4 hover:bg-[rgb(177,229,242)]/5 p-3 rounded-r transition-colors"
+                    <div
+                      key={`award-${award.name}-${index}`}
+                      className="border-l-4 border-[rgb(177,229,242)] pl-4 hover:bg-[rgb(177,229,242)]/5 p-3 rounded-r transition-colors animate-slide-in-left"
+                      style={{ animationDelay: `${0.5 + index * 0.1}s` }}
                     >
                       <div className="flex items-start gap-3">
                         <Award className="w-5 h-5 text-[rgb(177,229,242)] shrink-0 mt-1" />
@@ -266,14 +243,14 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                           <p className="text-sm text-[rgb(39,38,53)]/70 mt-1">{award.description}</p>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
             {/* Leadership Section */}
-            <motion.div variants={itemVariants}>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-300 bg-white/90 backdrop-blur-sm h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[rgb(39,38,53)] flex items-center gap-3">
@@ -285,12 +262,10 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {resume.leadership.map((leadership, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.15 }}
-                      className="p-4 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 rounded-lg hover:shadow-md transition-all"
+                    <div
+                      key={`leadership-${leadership.role}-${index}`}
+                      className="p-4 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 rounded-lg hover:shadow-md transition-all animate-slide-in-left"
+                      style={{ animationDelay: `${0.6 + index * 0.1}s` }}
                     >
                       <h3 className="font-semibold text-[rgb(39,38,53)]">{leadership.role}</h3>
                       <p className="text-sm text-[rgb(39,38,53)]/60 mb-1">{leadership.organization}</p>
@@ -301,15 +276,15 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                         </p>
                       )}
                       <p className="text-sm text-[rgb(39,38,53)]/70 mt-2">{leadership.description}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
 
           {/* CTA Section */}
-          <motion.div variants={itemVariants} className="mt-8">
+          <div className="mt-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             <Card className="bg-linear-to-r from-[rgb(39,38,53)] to-[rgb(39,38,53)]/90 border-2 border-[rgb(177,229,242)]">
               <CardContent className="py-8 text-center">
                 <h2 className="text-3xl font-bold text-white mb-4">Let's Connect!</h2>
@@ -341,8 +316,8 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -8,14 +8,15 @@ import Link from 'next/link';
 import { Github, ExternalLink, Code2 } from 'lucide-react';
 import { Project } from '@/lib/types/content';
 
-const projectImages: { [key: string]: string } = {
+// Extract static lookup objects outside component
+const PROJECT_IMAGES: Record<string, string> = {
   'workout-app': '💪',
   'gaminghub': '🎮',
   'grace-on-going': '✝️',
   'cnc-construction': '🏗️',
 };
 
-const projectGradients: { [key: string]: string } = {
+const PROJECT_GRADIENTS: Record<string, string> = {
   'workout-app': 'from-blue-500/20 to-purple-500/20',
   'gaminghub': 'from-pink-500/20 to-red-500/20',
   'grace-on-going': 'from-green-500/20 to-teal-500/20',
@@ -29,30 +30,50 @@ interface ProjectsFilterProps {
 export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
   const [filter, setFilter] = useState<string>('all');
 
-  const filteredProjects = filter === 'all'
-    ? projects
-    : projects.filter(p => p.status === filter);
+  // Memoize filter handlers to prevent recreation on every render
+  const handleFilterAll = useCallback(() => setFilter('all'), []);
+  const handleFilterCompleted = useCallback(() => setFilter('Completed'), []);
+  const handleFilterInProgress = useCallback(() => setFilter('In Progress'), []);
+
+  // Memoize filtered projects to prevent recalculation on every render
+  const filteredProjects = useMemo(() => {
+    return filter === 'all'
+      ? projects
+      : projects.filter(p => p.status === filter);
+  }, [filter, projects]);
+
+  // Memoize project descriptions to avoid string operations on every render
+  const projectDescriptions = useMemo(() => {
+    return projects.reduce((acc, project) => {
+      const description = project.content
+        .split('\n')
+        .find(line => line.trim() && !line.startsWith('#'))
+        ?.substring(0, 120) || 'Click to learn more about this project';
+      acc[project.slug] = description;
+      return acc;
+    }, {} as Record<string, string>);
+  }, [projects]);
 
   return (
     <>
       {/* Filter Buttons */}
       <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-4">
         <Button
-          onClick={() => setFilter('all')}
+          onClick={handleFilterAll}
           variant={filter === 'all' ? 'default' : 'outline'}
           className={filter === 'all' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
           All Projects
         </Button>
         <Button
-          onClick={() => setFilter('Completed')}
+          onClick={handleFilterCompleted}
           variant={filter === 'Completed' ? 'default' : 'outline'}
           className={filter === 'Completed' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
           Completed
         </Button>
         <Button
-          onClick={() => setFilter('In Progress')}
+          onClick={handleFilterInProgress}
           variant={filter === 'In Progress' ? 'default' : 'outline'}
           className={filter === 'In Progress' ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80 text-sm sm:text-base' : 'text-sm sm:text-base'}
         >
@@ -66,10 +87,10 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
             <div key={project.slug}>
               <Card className="group overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-200 border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm h-full">
                 {/* Project Icon/Image Header */}
-                <div className={`h-32 bg-linear-to-br ${projectGradients[project.slug] || 'from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20'} flex items-center justify-center relative overflow-hidden`}>
+                <div className={`h-32 bg-linear-to-br ${PROJECT_GRADIENTS[project.slug] || 'from-[rgb(177,229,242)]/20 to-[rgb(206,206,206)]/20'} flex items-center justify-center relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-[rgb(39,38,53)]/5 group-hover:bg-[rgb(39,38,53)]/10 transition-colors duration-200" />
                   <span className="text-7xl relative z-10 group-hover:scale-110 transition-transform duration-200">
-                    {projectImages[project.slug] || '📦'}
+                    {PROJECT_IMAGES[project.slug] || '📦'}
                   </span>
                   <Badge
                     className={`absolute top-4 right-4 ${
@@ -87,15 +108,15 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-[rgb(39,38,53)]/60">
-                    {project.content.split('\n').find(line => line.trim() && !line.startsWith('#'))?.substring(0, 120) || 'Click to learn more about this project'}...
+                    {projectDescriptions[project.slug]}...
                   </CardDescription>
                 </CardHeader>
 
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
+                    {project.tech.map((tech) => (
                       <Badge
-                        key={techIndex}
+                        key={`${project.slug}-${tech}`}
                         variant="secondary"
                         className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/40 transition-colors duration-200"
                       >

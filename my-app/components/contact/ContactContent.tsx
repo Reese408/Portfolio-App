@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -29,9 +30,19 @@ interface ContactContentProps {
   resume: Resume;
 }
 
+// Extract static opportunities data outside component
+const OPPORTUNITIES = [
+  { id: 'fullstack', icon: Code2, label: 'Full-Stack Development', color: 'text-blue-500' },
+  { id: 'cyber', icon: Shield, label: 'CyberSecurity', color: 'text-purple-500' },
+  { id: 'cloud', icon: Cloud, label: 'Cloud Engineering', color: 'text-orange-500' },
+  { id: 'devops', icon: GitBranch, label: 'DevOps / DevSecOps', color: 'text-green-500' }
+] as const;
+
 export default function ContactContent({ resume }: ContactContentProps) {
-  const contactMethods = [
+  // Memoize contact methods since they depend on resume prop
+  const contactMethods = useMemo(() => [
     {
+      id: 'email',
       icon: Mail,
       label: 'Email',
       value: resume.email,
@@ -39,6 +50,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
       color: 'from-blue-500/20 to-cyan-500/20'
     },
     {
+      id: 'phone',
       icon: Phone,
       label: 'Phone',
       value: resume.phone,
@@ -46,16 +58,19 @@ export default function ContactContent({ resume }: ContactContentProps) {
       color: 'from-green-500/20 to-teal-500/20'
     },
     {
+      id: 'location',
       icon: MapPin,
       label: 'Location',
       value: resume.location,
       href: null,
       color: 'from-purple-500/20 to-pink-500/20'
     }
-  ];
+  ], [resume.email, resume.phone, resume.location]);
 
-  const socialLinks = [
+  // Memoize social links since they depend on resume prop
+  const socialLinks = useMemo(() => [
     {
+      id: 'github',
       icon: Github,
       label: 'GitHub',
       value: resume.links.github.replace('https://', ''),
@@ -63,6 +78,7 @@ export default function ContactContent({ resume }: ContactContentProps) {
       color: 'from-gray-500/20 to-slate-500/20'
     },
     {
+      id: 'linkedin',
       icon: Linkedin,
       label: 'LinkedIn',
       value: resume.links.linkedin.replace('https://', '').replace('www.', ''),
@@ -70,20 +86,14 @@ export default function ContactContent({ resume }: ContactContentProps) {
       color: 'from-blue-600/20 to-blue-400/20'
     },
     {
+      id: 'instagram',
       icon: Instagram,
       label: 'Instagram',
       value: 'instagram.com/reese.redman05',
       href: 'https://www.instagram.com/reese.redman05/',
       color: 'from-pink-500/20 to-purple-500/20'
     }
-  ];
-
-  const opportunities = [
-    { icon: Code2, label: 'Full-Stack Development', color: 'text-blue-500' },
-    { icon: Shield, label: 'CyberSecurity', color: 'text-purple-500' },
-    { icon: Cloud, label: 'Cloud Engineering', color: 'text-orange-500' },
-    { icon: GitBranch, label: 'DevOps / DevSecOps', color: 'text-green-500' }
-  ];
+  ], [resume.links.github, resume.links.linkedin]);
 
   return (
     <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] via-[rgb(206,206,206)] to-[rgb(177,229,242)] py-12">
@@ -110,8 +120,8 @@ export default function ContactContent({ resume }: ContactContentProps) {
 
           {/* Contact Information Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {contactMethods.map((method, index) => (
-              <div key={index}>
+            {contactMethods.map((method) => (
+              <div key={method.id}>
                 <Card className="border-2 border-[rgb(177,229,242)]/20 hover:border-[rgb(177,229,242)] transition-all duration-200 bg-white/90 backdrop-blur-sm h-full hover:shadow-lg">
                   <CardHeader>
                     <div className={`w-12 h-12 rounded-full bg-linear-to-br ${method.color} flex items-center justify-center mb-3 mx-auto`}>
@@ -154,8 +164,8 @@ export default function ContactContent({ resume }: ContactContentProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {socialLinks.map((social, index) => (
-                    <div key={index}>
+                  {socialLinks.map((social) => (
+                    <div key={social.id}>
                       <Card className={`border-l-4 border-[rgb(177,229,242)] hover:shadow-lg transition-all duration-200 bg-linear-to-br ${social.color}`}>
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between">
@@ -205,9 +215,9 @@ export default function ContactContent({ resume }: ContactContentProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                  {opportunities.map((opp, index) => (
+                  {OPPORTUNITIES.map((opp) => (
                     <div
-                      key={index}
+                      key={opp.id}
                       className="flex items-center gap-3 p-4 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 rounded-lg hover:shadow-md transition-all duration-200"
                     >
                       <opp.icon className={`w-6 h-6 ${opp.color}`} />
