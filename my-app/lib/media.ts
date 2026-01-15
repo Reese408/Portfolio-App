@@ -25,5 +25,5 @@ export const certs = {
 ========================= */
 export const miscMedia = {
   profilePic: `${MEDIA_BASE}/misc/ProfilePic.jpg`,
-  resume: `${MEDIA_BASE}/misc/Resume-12-29.pdf`,
+  resume: `${MEDIA_BASE}/misc/Resume.pdf`,
 } as const;

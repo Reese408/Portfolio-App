@@ -1,6 +1,6 @@
 {
   "name": "Reese Redman",
-  "title": "Computer Science & CyberSecurity Student",
+  "title": "Computer Science & Cyber Security Student",
   "email": "reeseredman099@gmail.com",
   "phone": "440-645-1162",
   "location": "Newark, Ohio",
@@ -8,14 +8,15 @@
     "github": "https://github.com/Reese408",
     "linkedin": "https://www.linkedin.com/in/robert-redman-093b50338/"
   },
-  "summary": "Enthusiastic Computer Science and CyberSecurity student with a deep passion for learning and problem solving. Thrives in collaborative environments, and looking to continuously expand my skill set through hands-on projects and challenges. Motivated to contribute and adapt, and grow while helping build effective solutions.",
+  "summary": "Computer Science and CyberSecurity student actively gaining hands-on experience in full-stack development and cloud security, motivated to grow into a DevSecOps engineer by building secure applications, automating workflows, and hardening cloud-native systems through internships and projects.",
   "education": [
     {
-      "degree": "Bachelor of Science in Computer Science & CyberSecurity",
+      "degree": "Bachelor of Science in Computer Science",
+      "minor":"Cyber Security",
       "school": "Ashland University",
       "location": "Ashland, Ohio",
       "startDate": "Aug 2023",
-      "graduationDate": "May 2027",
+      "graduationDate": "December 2026",
       "relevantCoursework": [
         "AI & Machine Learning",
         "Data Structures",

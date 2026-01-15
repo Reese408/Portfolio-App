@@ -192,6 +192,11 @@ export default function AboutContent({ aboutContent, resume }: AboutContentProps
                       <CardHeader>
                         <CardTitle className="text-xl text-[rgb(39,38,53)] group-hover:text-[rgb(177,229,242)] transition-colors">
                           {edu.degree}
+                          {edu.minor && (
+                            <span className="text-base font-medium text-[rgb(39,38,53)]/70 ml-2">
+                              (Minor: {edu.minor})
+                            </span>
+                          )}
                         </CardTitle>
                         <CardDescription className="text-[rgb(39,38,53)]/70">
                           <div className="flex flex-wrap gap-4 mt-2">

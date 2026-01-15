@@ -18,6 +18,7 @@ export interface Resume {
 
 export interface Education {
   degree: string;
+  minor?: string;
   school: string;
   location: string;
   startDate: string;
