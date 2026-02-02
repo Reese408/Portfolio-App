@@ -1,133 +1,95 @@
-# 🌐 Portfolio Application — AWS + Next.js Static Deployment
+# Portfolio Application
 
-This project is a **production-ready personal portfolio application** designed to showcase my **skills, projects, certifications, and experience** while demonstrating real-world **cloud infrastructure, security, and deployment practices**.
+A personal portfolio application built with **Next.js** to showcase my skills, projects, certifications, and experience.
 
-Rather than using a managed platform like Vercel, this portfolio was intentionally built and deployed using **core AWS services** to demonstrate hands-on knowledge of **cloud architecture, CDN caching, security controls, and cost-efficient hosting**.
-
----
-
-## 🚀 Live Site
-🔗 https://reeseredman.com
+Live site: https://reeseredman.com
 
 ---
 
-## 🎯 Project Goals
-
-- Build a **clean, fast, static portfolio** with modern web tooling
-- Deploy using **AWS-native infrastructure**
-- Secure the application using **best practices**
-- Ensure **low cost, high performance, and scalability**
-- Demonstrate **DevOps & Cloud fundamentals** in a real project
-
----
-
-## 🧱 Tech Stack
+## Tech Stack
 
 ### Frontend
 - Next.js (App Router) — Static Site Generation (SSG)
 - React
 - TypeScript
-- Modern CSS
-- Static export (`output: export`)
+- Tailwind CSS
+- Framer Motion
 
-### Cloud & Infrastructure
-- Amazon S3 — Private static file storage
-- Amazon CloudFront — Global CDN, caching, HTTPS, DDoS protection
-- AWS Route 53 — Custom domain & DNS
-- AWS Certificate Manager (ACM) — TLS/HTTPS certificates
-- CloudFront Origin Access Control (OAC) — Secure private S3 access
-- AWS CloudWatch — Monitoring and cache metrics
-- AWS WAF (monitor mode) — Layer 7 protection
+### Hosting & Infrastructure
+- **Vercel** — Hosting, CDN, HTTPS, deployments
+- **AWS S3** — Media asset storage (images, videos, resume PDF)
+- **AWS Route 53** — Custom domain DNS
 
 ---
 
-## 🏗️ Architecture
+## Infrastructure History
 
-User Browser  
-→ CloudFront (CDN + HTTPS + Cache)  
-→ Private S3 Bucket (Static Files)
+This site was originally deployed on a full AWS stack for approximately one month to gain hands-on experience with cloud infrastructure:
+
+- **S3** — Private static file hosting
+- **CloudFront** — Global CDN with Origin Access Control (OAC)
+- **ACM** — TLS/HTTPS certificate management
+- **Route 53** — Custom domain DNS
+- **WAF** — Layer 7 web application firewall (monitor mode)
+- **CloudWatch** — Monitoring and cache metrics
+
+After validating that architecture, the site was migrated to **Vercel for cost optimization**. AWS WAF alone accounted for the majority of monthly costs, which was unnecessary for a static portfolio with no authentication, no backend APIs, and no sensitive data. Vercel provides CDN, HTTPS, and DDoS protection out of the box at no cost for this use case.
+
+**What remains on AWS:**
+- Route 53 for DNS management
+- S3 for media assets (publicly readable bucket serving images, videos, and documents)
 
 ---
 
-## 📁 Project Structure
+## Architecture
+
+```
+User Browser
+  → Vercel Edge Network (CDN + HTTPS)
+  → Static Next.js Site
+
+Media Assets
+  → AWS S3 (us-east-2)
+```
+
+---
+
+## Project Structure
 
 ```
 my-app/
-├── app/
-├── lib/
-├── public/
-├── out/
-├── next.config.ts
-└── README.md
+├── app/          # Next.js App Router pages
+├── components/   # Reusable UI components
+├── content/      # Markdown & JSON content files
+├── lib/          # Utilities, content loader, media config
+├── public/       # Static assets
+└── next.config.ts
 ```
 
-The application is statically exported using:
+All content is loaded from local files at build time. No database or external APIs.
 
+---
+
+## Development
+
+```bash
+npm install
+npm run dev
 ```
+
+## Build
+
+```bash
 npm run build
 ```
 
 ---
 
-## ☁️ AWS Deployment Breakdown
+## Author
 
-### Amazon S3
-- Stores static build artifacts
-- Block Public Access enabled
-- Objects served only via CloudFront
-- REST endpoint (not S3 website hosting)
+Reese Redman
+Computer Science & Cybersecurity
+Full-Stack | Cloud | DevOps
 
-### CloudFront
-- Global edge caching
-- HTTPS enforced
-- Origin Access Control (OAC)
-- SPA routing support via 403/404 → index.html
-
-### Route 53
-- Custom domain routing
-- Alias records to CloudFront
-- IPv4 + IPv6 support
-
-### Security
-- HTTPS enforced
-- Private S3 bucket
-- WAF enabled (monitor mode)
-- No exposed secrets or backend
-
----
-
-## 💸 Cost Optimization
-
-- Aggressive CDN caching
-- Minimal S3 origin requests
-- No server-side compute
-- Scales automatically
-- Extremely low operational cost
-
----
-
-## 🧠 What This Project Demonstrates
-
-- Real AWS infrastructure experience
-- CDN caching strategies
-- Secure static deployments
-- DNS & TLS configuration
-- Practical cloud debugging
-- Production-grade architecture decisions
-
----
-
-## 📄 Resume Summary
-
-Deployed a production static portfolio application using AWS S3, CloudFront, Route 53, and ACM with private bucket access via CloudFront Origin Access Control (OAC), HTTPS enforcement, global CDN caching, and CloudWatch monitoring for cost-efficient and secure hosting.
-
----
-
-## 👤 Author
-
-Reese Redman  
-Computer Science & Cybersecurity  
-Full-Stack • Cloud • DevOps  
-
-https://reeseredman.com  
+https://reeseredman.com
 https://github.com/Reese408

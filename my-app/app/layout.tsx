@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
+import { miscMedia } from "@/lib/media";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Reese Redman Portfolio",
     images: [
       {
-        url: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/misc/ProfilePic.jpg",
+        url: miscMedia.profilePic,
         width: 1200,
         height: 630,
         alt: "Reese Redman - Full Stack Developer",
