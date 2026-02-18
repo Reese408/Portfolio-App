@@ -1,0 +1,119 @@
+{
+  "certifications": [
+    {
+      "name": "CS50W: Web Programming with Python & JavaScript",
+      "issuer": "Harvard University (edX)",
+      "date": "2024",
+      "status": "Completed",
+      "logo": "harvard",
+      "description": "Comprehensive course covering web development with Django, JavaScript, SQL, and modern web technologies",
+      "whatLearned": [
+        "Building full-stack web applications with Django and JavaScript",
+        "Database design and SQL query optimization",
+        "RESTful API design and implementation",
+        "Front-end development with modern JavaScript",
+        "Security best practices for web applications"
+      ],
+      "skills": [
+        "python",
+        "javascript",
+        "django"
+      ],
+      "images": [
+        "cs50w-certificate.png"
+      ]
+    },
+    {
+      "name": "React – The Complete Guide 2025 (Next.js, Redux)",
+      "issuer": "Udemy",
+      "date": "2025", 
+      "status": "Completed",
+      "logo": "udemy",
+      "description": "Advanced React course covering Next.js, Redux state management, and modern React patterns",
+      "whatLearned": [
+        "Advanced React patterns and hooks",
+        "State management with Redux and Context API",
+        "Server-side rendering with Next.js",
+        "Performance optimization techniques",
+        "TypeScript integration with React"
+      ],
+      "skills": [
+        "react",
+        "javascript",
+        "typescript"
+      ],
+      "images": [
+        "react-certificate.png"
+      ]
+    },
+    {
+      "name": "Ultimate AWS Certified Solutions Architect Associate 2026",
+      "issuer": "Udemy",
+      "status": "In Progress",
+      "logo": "aws",
+      "description": "Comprehensive AWS certification prep covering cloud architecture, services, and best practices"
+    },
+    {
+      "name": "Ultimate ASP.NET Core Web API Development Guide",
+      "issuer": "Udemy",
+      "instructor": "Trevoir Williams",
+      "status": "In Progress",
+      "logo": "udemy",
+      "description": "End-to-end guide to building production-ready REST APIs with ASP.NET Core, covering Clean Architecture, Entity Framework Core, authentication, and Azure deployment",
+      "whatLearned": [
+        "Building RESTful Web APIs with ASP.NET Core and .NET",
+        "Clean Architecture patterns and dependency injection",
+        "Data access with Entity Framework Core",
+        "JWT authentication and role-based authorization",
+        "Deploying ASP.NET Core APIs to Azure App Service"
+      ],
+      "skills": [
+        "csharp",
+        "dotnet",
+        "azure"
+      ]
+    },
+    {
+      "name": "Hands-On Essentials - Data Warehouse",
+      "issuer": "Snowflake",
+      "date": "2025",
+      "status": "Completed",
+      "logo": "snowflake",
+      "description": "Cloud data warehouse platform fundamentals, data modeling, warehouse architecture, and query optimization",
+      "whatLearned": [
+        "Cloud data warehouse platform fundamentals",
+        "Data modeling and warehouse architecture",
+        "Query optimization and performance tuning",
+        "Snowflake-specific features and capabilities",
+        "ETL processes and data transformation"
+      ],
+      "skills": [
+        "sql"
+      ],
+      "images": [
+        "snowflake-cert1.png"
+      ]
+    },
+    {
+      "name": "Collaboration & Marketing",
+      "issuer": "Snowflake",
+      "date": "2025",
+      "status": "Completed",
+      "logo": "snowflake",
+      "description": "Data sharing and collaboration features, marketing analytics, and cross-organizational data workflows",
+      "whatLearned": [
+        "Data sharing and collaboration features",
+        "Marketing analytics and insights",
+        "Cross-organizational data workflows",
+        "Secure data exchange between organizations",
+        "Data marketplace concepts"
+      ],
+      "skills": [
+        "sql"
+      ],
+      "images": [
+        "snowflake-cert2.png"
+      ]
+    }
+  ]
+}
