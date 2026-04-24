@@ -57,7 +57,7 @@ const MARKDOWN_COMPONENTS: Components = {
   ),
   a: ({ ...props }) => (
     <a
-      className="text-[rgb(177,229,242)] hover:text-[rgb(206,206,206)] underline transition-colors"
+      className="text-[rgb(39,38,53)] hover:text-[rgb(15,23,42)] underline transition-colors font-medium"
       {...props}
     />
   ),

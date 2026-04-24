@@ -1,7 +1,7 @@
 ---
 name: Node.js
 slug: nodejs
-level: Advanced
+level: Intermediate-Advanced
 icon: 🟢
 yearsOfExperience: 2
 category: Backend

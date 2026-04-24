@@ -1,7 +1,7 @@
 ---
 name: Tailwind CSS
 slug: tailwind
-level: Intermediate
+level: Intermediate-Advanced
 icon: 🎨
 yearsOfExperience: 1
 category: Frontend

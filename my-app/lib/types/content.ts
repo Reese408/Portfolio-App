@@ -117,7 +117,7 @@ export interface Certification {
 export interface Project {
   title: string;
   slug: string;
-  status: 'Completed' | 'In Progress' | 'Planned';
+  status: 'Completed' | 'In Progress' | 'Planned' | 'Live';
   tech: string[];
   github?: string;
   demo?: string;
@@ -136,6 +136,7 @@ export interface ProjectMetadata {
   tech: string[];
   github?: string;
   demo?: string;
+  liveUrl?: string;
   featured: boolean;
   order: number;
   video?: string; // Video filename in /public/projects/

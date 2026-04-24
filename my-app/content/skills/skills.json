@@ -15,7 +15,7 @@
         },
         {
           "name": "Python",
-          "level": "Intermediate-Advanced",
+          "level": "Advanced",
           "icon": "python"
         },
         {
@@ -30,7 +30,7 @@
         },
         {
           "name": "C#",
-          "level": "Intermediate",
+          "level": "Intermediate-Advanced",
           "icon": "csharp"
         }
       ]
@@ -85,7 +85,7 @@
         },
         {
           "name": ".NET / ASP.NET Core",
-          "level": "Intermediate-Advanced",
+          "level": "Advanced",
           "icon": "dotnet"
         }
       ]
@@ -100,13 +100,23 @@
         },
         {
           "name": "MongoDB",
-          "level": "Intermediate",
+          "level": "Intermediate-Advanced",
           "icon": "mongodb"
         },
         {
           "name": "SQLite",
           "level": "Intermediate",
           "icon": "sqlite"
+        },
+        {
+          "name": "Redis",
+          "level": "Intermediate",
+          "icon": "redis"
+        },
+        {
+          "name": "Supabase",
+          "level": "Intermediate-Advanced",
+          "icon": "supabase"
         }
       ]
     },
@@ -125,7 +135,7 @@
         },
         {
           "name": "GitHub Actions",
-          "level": "Intermediate",
+          "level": "Advanced",
           "icon": "actions"
         },
         {
@@ -145,18 +155,28 @@
         },
         {
           "name": "Azure",
-          "level": "Intermediate",
+          "level": "Intermediate-Advanced",
           "icon": "azure"
         },
         {
           "name": "Azure DevOps",
-          "level": "Intermediate-Advanced",
+          "level": "Advanced",
           "icon": "azuredevops"
         },
         {
           "name": "Postman",
           "level": "Intermediate",
           "icon": "postman"
+        },
+        {
+          "name": "Cloudflare",
+          "level": "Intermediate",
+          "icon": "cloudflare"
+        },
+        {
+          "name": "Google Cloud Platform",
+          "level": "Intermediate",
+          "icon": "gcp"
         }
       ]
     },

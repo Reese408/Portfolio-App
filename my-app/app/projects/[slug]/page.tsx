@@ -20,6 +20,7 @@ const projectImages: { [key: string]: string } = {
   'gaminghub': '🎮',
   'grace-on-going': '✝️',
   'cnc-construction': '🏗️',
+  'voice-up-athletics': '🏈',
 };
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -51,7 +52,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <span className="text-9xl">{projectImages[project.slug] || '📦'}</span>
             <Badge
               className={`absolute top-6 right-6 text-base px-4 py-2 ${
-                project.status === 'Completed'
+                project.status === 'Completed' || project.status === 'Live'
                   ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)]'
                   : 'bg-[rgb(206,206,206)] text-[rgb(39,38,53)]'
               }`}
@@ -90,8 +91,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {project.demo && (
                 <Button
                   asChild
-                  variant="outline"
-                  className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                  className="bg-[rgb(39,38,53)] text-white hover:bg-[rgb(28,27,38)]"
                 >
                   <a href={project.demo} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />

@@ -1,7 +1,7 @@
 ---
 name: .NET / ASP.NET Core
 slug: dotnet
-level: Intermediate
+level: Advanced
 icon: 🔮
 yearsOfExperience: 1
 category: Backend

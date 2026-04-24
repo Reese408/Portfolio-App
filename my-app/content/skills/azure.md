@@ -1,7 +1,7 @@
 ---
 name: Azure
 slug: azure
-level: Intermediate
+level: Intermediate-Advanced
 icon: 🌩️
 yearsOfExperience: 1
 category: DevOps & Tools

@@ -14,6 +14,7 @@ const PROJECT_IMAGES: Record<string, string> = {
   'gaminghub': '🎮',
   'grace-on-going': '✝️',
   'cnc-construction': '🏗️',
+  'voice-up-athletics': '🏈',
 };
 
 const PROJECT_GRADIENTS: Record<string, string> = {
@@ -21,6 +22,7 @@ const PROJECT_GRADIENTS: Record<string, string> = {
   'gaminghub': 'from-pink-500/20 to-red-500/20',
   'grace-on-going': 'from-green-500/20 to-teal-500/20',
   'cnc-construction': 'from-orange-500/20 to-yellow-500/20',
+  'voice-up-athletics': 'from-cyan-500/20 to-sky-500/20',
 };
 
 interface ProjectsFilterProps {
@@ -94,7 +96,7 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                   </span>
                   <Badge
                     className={`absolute top-4 right-4 ${
-                      project.status === 'Completed'
+                      project.status === 'Completed' || project.status === 'Live'
                         ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)]'
                         : 'bg-[rgb(206,206,206)] text-[rgb(39,38,53)]'
                     }`}
@@ -157,8 +159,7 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                     <Button
                       asChild
                       variant="outline"
-                      size="icon"
-                      className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+                      className="border-[rgb(39,38,53)] bg-white text-[rgb(39,38,53)] hover:bg-[rgb(39,38,53)]/10"
                     >
                       <a
                         href={project.demo}
@@ -166,7 +167,8 @@ export default function ProjectsFilter({ projects }: ProjectsFilterProps) {
                         rel="noopener noreferrer"
                         title="View Live Demo"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4 mr-2 inline-block" />
+                        Live Demo
                       </a>
                     </Button>
                   )}

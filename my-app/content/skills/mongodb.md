@@ -1,7 +1,7 @@
 ---
 name: MongoDB
 slug: mongodb
-level: Intermediate
+level: Intermediate-Advanced
 icon: 🍃
 yearsOfExperience: 2
 category: Database

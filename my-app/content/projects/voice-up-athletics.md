@@ -1,26 +1,53 @@
 ---
 title: "Voice Up Athletics"
 slug: "voice-up-athletics"
-status: "In Progress"
-tech: ["C# / .NET 10", "ASP.NET Core Web API", "React", "Next.js", "Expo / React Native", "TypeScript", "Azure SQL", "Azure App Service", "Azure Static Web Apps", "Azure DevOps", "Microsoft Entra ID", "Entity Framework Core", "Clean Architecture"]
+status: "Live"
+demo: "https://voiceupathletics.com"
+tech: ["C# / .NET 10", "ASP.NET Core Web API", "React", "Next.js", "Expo / React Native", "TypeScript", "Azure SQL", "Azure App Service", "Azure Static Web Apps", "Azure DevOps", "Microsoft Entra ID", "Entity Framework Core", "SignalR", "Hangfire", "Azure Communication Services", "Clean Architecture"]
 featured: true
 order: 1
 ---
 
 # Voice Up Athletics
 
-**Senior Capstone Project — Built for a Real Company**
+A production-ready anonymous reporting platform for university athletics departments, built as my senior capstone project.
 
-A production multi-tenant SaaS platform developed as my senior capstone project and actively built for an actual client launching a real product. Voice Up Athletics gives universities a centralized system to manage athletes, reporting, and administrative oversight — engineered from day one with enterprise security, Azure cloud infrastructure, and full CI/CD automation.
+**Live Senior Capstone Product — Built for a Real Client**
 
-## Tech Stack
+Voice Up Athletics is a production-ready, multi-tenant anonymous reporting and compliance platform built as my senior capstone project. The live product is deployed at https://voiceupathletics.com and serves as a real application for a university athletics client.
 
-- **Backend:** ASP.NET Core Web API (.NET 10), Entity Framework Core, Clean Architecture
-- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS
-- **Mobile:** Expo / React Native — shares the same backend API as the web client
-- **Auth:** Microsoft Entra ID (Azure AD) — JWT validation, role-based authorization
-- **Database:** Azure SQL with tenant-scoped data and relational integrity
-- **Infrastructure:** Azure App Service, Azure Static Web Apps, Azure DevOps CI/CD
+## Overview
+
+Voice Up Athletics gives universities a privacy-first platform for anonymous athlete reporting, secure case management, and compliance workflows. The product is designed around FERPA-adjacent anonymity guarantees: athlete identity is never exposed by default, and any disclosure path is governed, auditable, and emergency-safe.
+
+- Anonymous reporting with randomly assigned aliases
+- Case lifecycle management (New → Under Review → Escalated → Resolved / Closed)
+- Legal hold preservation without blocking authorized case work
+- Real-time SignalR chat for athlete and staff communication
+- Compliance analytics, CSV exports, and tenant-scoped dashboards
+- Multi-tenant SaaS with strict data isolation per university
+
+## What I Built
+
+### Backend
+- ASP.NET Core 10 Web API with clean 3-layer architecture (Core / Infrastructure / API)
+- Entity Framework Core 10, Azure SQL, soft delete, and tenant-global query filters
+- Microsoft Entra ID / JWT authentication and role-based authorization
+- SignalR for real-time case messaging and staff chat
+- Hangfire for scheduled jobs, escalation expiry, and background processing
+- Azure Communication Services for email digest notifications
+
+### Frontend
+- Next.js 16 App Router, React 19, TypeScript, Tailwind CSS, shadcn/ui v4
+- Protected routes, server actions, streaming, and optimized authenticated pages
+- Shared API contract across web and mobile clients
+
+### Infrastructure & DevOps
+- Azure Static Web Apps for the frontend
+- Azure App Service for the API
+- Azure SQL and Azure Blob Storage for data and media
+- Azure DevOps pipelines for build, test, and deploy to dev → QA → prod
+- Environment-aware secrets and automated deployments
 
 ## Architecture
 
@@ -36,53 +63,64 @@ The backend is organized into three discrete layers to enforce separation of con
 
 ### Multi-Tenant Design
 
-Every entity inherits from a shared `Tenant` base, ensuring all data is scoped at the database level. Tenant resolution is driven by the **Entra Tenant ID** extracted from the validated JWT — no cross-tenant data leakage is possible by design.
+Every entity is tenant-scoped with a shared `Tenant` base and EF Core global query filters. Tenant resolution is driven by the validated JWT claims and middleware order ensures tenant context is established before any user data is loaded.
 
 ### Role-Based Authorization
 
-Three distinct roles with scoped access at both the API middleware and data layer:
+Three distinct roles are enforced at both the API middleware and data layer:
 
-- **Athlete** — Access to their own profile and performance data
-- **Admin** — Manages athletes within a single university
-- **SuperAdmin** — Cross-tenant oversight across multiple universities
+- **Athlete** — Access to athlete-specific report and profile data
+- **Compliance Staff** — Scoped access within the university tenant
+- **SuperAdmin** — Cross-tenant oversight and administrative control
 
 ## Key Features
 
-### Authentication & Identity
-- Microsoft Entra ID (Azure AD) as the identity provider for both web and mobile clients
-- JWT validation handled in ASP.NET Core middleware
-- Password reset and user management flows
-- Athlete IDs formatted as `athlete-xxxx` (role-specific ID scheme)
+### Privacy-First Reporting
+- Anonymous athlete reporting bound to a permanent alias
+- Case records never expose real identity by default
+- Disclosure only through a governed workflow with audit history
 
-### Administration
-- University admins manage their own athletes with full CRUD operations
-- SuperAdmins can view and administer multiple universities from a single interface
-- Strict privilege separation — admin actions are scoped to their tenant only
+### Case Lifecycle & Legal Hold
+- Finite state machine managing report status transitions
+- Legal hold preserves records, blocks deletion, and allows authorized review
+- Separation of legal hold rules from identity disclosure logic
 
-### Reporting System
-- Role-scoped reporting with data filtered per tenant and user role
-- Designed for extensibility to support additional report types
+### Real-Time Collaboration
+- SignalR-powered chat for real-time, secure staff and athlete communication
+- Cache invalidation strategy across server actions, TanStack Query, and output caching
+- Tenant-safe real-time updates with no cross-tenant bleed
 
-### DevOps & Deployment
-- Azure DevOps CI/CD pipelines for automated build, test, and deployment
-- Azure App Service for backend with `WEBSITE_RUN_FROM_PACKAGE` deployment model
-- Azure Static Web Apps for the Next.js frontend
-- Environment secrets managed through Azure App Configuration — no credentials in source
+### Compliance & Analytics
+- Tenant-scoped dashboards for case counts, severity, SLA, and escalation trends
+- CSV export and audit-logged data export flows
+- Access controls layered by role and tenant
 
-## Technical Highlights
+## Status
 
-### Enterprise Multi-Tenancy
-Built true data isolation at the infrastructure level rather than relying on application-layer filtering. Every EF Core query is tenant-scoped, making cross-tenant data exposure impossible regardless of application code paths.
+- Live product deployed at https://voiceupathletics.com
+- Production-ready senior capstone app with real client usage
+- Playwright E2E coverage for anonymity, tenant isolation, auth, and report lifecycle
+- Ongoing enhancements and roadmap items are actively tracked
 
-### Microsoft Entra ID Integration
-Implemented full OAuth 2.0 / OIDC flows with Microsoft Entra ID. The backend validates JWTs issued by Entra, extracts claims (including the tenant ID and role), and enforces authorization at the middleware layer before any controller logic runs.
+## Contributors
 
-### Shared API for Web & Mobile
-A single ASP.NET Core Web API serves both the Next.js web client and the Expo React Native mobile app. Consistent auth, consistent data contracts — no duplicated backend logic.
+- Reese Redman — full-stack developer, architect, and product lead
+- Voice Up Athletics founding team — product strategy and domain guidance
+- Client stakeholders — compliance requirements, early adoption feedback, and validation
 
-### CI/CD with Azure DevOps
-Automated pipelines handle builds and deployments to Azure on every merge. This ensures the production environment is always in sync with main and eliminates manual deployment steps.
+## Tools, Skills, and Courses
+
+- Tools: Azure DevOps, Microsoft Entra ID, SignalR, Hangfire, Azure Communication Services, Playwright, Claude Code / AI-assisted development, GitHub Copilot
+- Skills: C#, ASP.NET Core, Entity Framework Core, React, Next.js, TypeScript, Tailwind CSS, multi-tenant architecture, auth/authorization, real-time systems, privacy-first design
+- Course: Senior Capstone (CS499) — real client project experience, architecture, deployment, and product launch
+
+## Next / Still to Add
+
+- Polished athlete engagement layer and campus feed content
+- Advanced compliance analytics and dashboard filtering
+- Expanded audit log and export capabilities
+- Product walkthrough video and case study media
 
 ---
 
-**Senior Capstone Project — Actively developed for a real client | In Production on Azure**
+**Voice Up Athletics is done and live. Visit the product at https://voiceupathletics.com.**

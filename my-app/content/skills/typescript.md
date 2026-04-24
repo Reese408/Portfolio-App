@@ -1,7 +1,7 @@
 ---
 name: TypeScript
 slug: typescript
-level: Intermediate
+level: Intermediate-Advanced
 icon: 🔷
 yearsOfExperience: 1
 category: Languages

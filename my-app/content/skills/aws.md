@@ -1,7 +1,7 @@
 ---
 name: AWS
 slug: aws
-level: Intermediate
+level: Intermediate-Advanced
 icon: ☁️
 yearsOfExperience: 1
 category: DevOps & Tools
