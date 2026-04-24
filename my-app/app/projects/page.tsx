@@ -1,39 +1,39 @@
 import Link from 'next/link';
-import { ExternalLink, Github } from 'lucide-react';
-import { Project } from '@/lib/types/content';
+import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { getAllProjects } from '@/lib/content/loader';
 import { projectImages } from '@/lib/media';
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-xs font-semibold tracking-widest text-sky-500 uppercase mb-2">
-      {children}
-    </p>
-  );
-}
-
-interface ProjectsProps {
-  projects: Project[];
-}
-
-export default function ProjectsSection({ projects }: ProjectsProps) {
-  // Featured projects: voice-up-athletics, grace-on-going, suds-on-wheels-usa
-  const featuredProjects = projects.filter(p => 
-    ['voice-up-athletics', 'grace-on-going', 'suds-on-wheels-usa'].includes(p.slug)
-  );
+export default function ProjectsPage() {
+  const projects = getAllProjects();
 
   return (
-    <section id="projects" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <SectionLabel>Portfolio</SectionLabel>
-          <h2 className="text-4xl font-bold text-slate-900 mb-3">High-Impact Projects</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto">
-            A selection of digital solutions built with a focus on scalability, performance, and exceptional user experience.
+    <div className="min-h-screen bg-[#F1F5F9]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Back link */}
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-500 transition-colors mb-10"
+        >
+          <ArrowLeft size={16} />
+          Back to Home
+        </Link>
+
+        {/* Header */}
+        <div className="mb-12">
+          <p className="text-xs font-semibold tracking-widest text-sky-500 uppercase mb-2">
+            Portfolio
+          </p>
+          <h1 className="text-5xl font-bold text-slate-900 leading-tight">
+            All <span className="text-sky-500">Projects</span>
+          </h1>
+          <p className="text-lg text-slate-500 mt-4 max-w-2xl">
+            Explore the complete collection of projects built with focus on scalability, performance, and exceptional user experience.
           </p>
         </div>
 
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredProjects.map(project => {
+          {projects.map(project => {
             const imageUrl = projectImages[project.slug];
             const isLive = project.status === 'Live' || project.status === 'Completed';
 
@@ -61,6 +61,12 @@ export default function ProjectsSection({ projects }: ProjectsProps) {
                     <span className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 text-green-600 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
                       <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                       LIVE
+                    </span>
+                  )}
+                  {project.status === 'In Progress' && (
+                    <span className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 text-amber-600 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                      <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
+                      In Progress
                     </span>
                   )}
                 </Link>
@@ -123,20 +129,7 @@ export default function ProjectsSection({ projects }: ProjectsProps) {
             );
           })}
         </div>
-
-        {/* See all projects button */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-600 transition-colors"
-          >
-            See All Projects
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
