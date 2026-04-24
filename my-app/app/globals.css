@@ -50,10 +50,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: #F1F5F9;
-}
-
 :root {
   --radius: 0.625rem;
 
@@ -65,7 +61,7 @@ body {
   --frosted-blue: 177 229 242;
 
   /* Light Mode */
-  --background: var(--ghost-white);
+  --background: 241 245 249;
   --foreground: var(--shadow-grey);
   --card: 255 255 255;
   --card-foreground: var(--shadow-grey);
