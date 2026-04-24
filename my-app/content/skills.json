@@ -1,0 +1,228 @@
+{
+  "categories": [
+    {
+      "name": "Languages",
+      "skills": [
+        {
+          "name": "JavaScript",
+          "level": "Advanced",
+          "icon": "javascript"
+        },
+        {
+          "name": "TypeScript",
+          "level": "Intermediate-Advanced",
+          "icon": "typescript"
+        },
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "icon": "python"
+        },
+        {
+          "name": "Java",
+          "level": "Advanced",
+          "icon": "java"
+        },
+        {
+          "name": "SQL",
+          "level": "Intermediate",
+          "icon": "database"
+        },
+        {
+          "name": "C#",
+          "level": "Intermediate-Advanced",
+          "icon": "csharp"
+        }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "skills": [
+        {
+          "name": "React",
+          "level": "Advanced",
+          "icon": "react"
+        },
+        {
+          "name": "Next.js",
+          "level": "Advanced",
+          "icon": "nextjs"
+        },
+        {
+          "name": "HTML & CSS",
+          "level": "Advanced",
+          "icon": "html"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "Intermediate-Advanced",
+          "icon": "tailwind"
+        }
+      ]
+    },
+    {
+      "name": "Backend",
+      "skills": [
+        {
+          "name": "Node.js",
+          "level": "Intermediate-Advanced",
+          "icon": "nodejs"
+        },
+        {
+          "name": "Express",
+          "level": "Advanced",
+          "icon": "express"
+        },
+        {
+          "name": "Django",
+          "level": "Intermediate",
+          "icon": "django"
+        },
+        {
+          "name": "Socket.io",
+          "level": "Intermediate",
+          "icon": "socketio"
+        },
+        {
+          "name": ".NET / ASP.NET Core",
+          "level": "Advanced",
+          "icon": "dotnet"
+        }
+      ]
+    },
+    {
+      "name": "Database",
+      "skills": [
+        {
+          "name": "PostgreSQL",
+          "level": "Intermediate-Advanced",
+          "icon": "postgresql"
+        },
+        {
+          "name": "MongoDB",
+          "level": "Intermediate-Advanced",
+          "icon": "mongodb"
+        },
+        {
+          "name": "SQLite",
+          "level": "Intermediate",
+          "icon": "sqlite"
+        },
+        {
+          "name": "Redis",
+          "level": "Intermediate",
+          "icon": "redis"
+        },
+        {
+          "name": "Supabase",
+          "level": "Intermediate-Advanced",
+          "icon": "supabase"
+        }
+      ]
+    },
+    {
+      "name": "DevOps & Tools",
+      "skills": [
+        {
+          "name": "Docker",
+          "level": "Advanced",
+          "icon": "docker"
+        },
+        {
+          "name": "Git & GitHub",
+          "level": "Advanced",
+          "icon": "git"
+        },
+        {
+          "name": "GitHub Actions",
+          "level": "Advanced",
+          "icon": "actions"
+        },
+        {
+          "name": "AWS",
+          "level": "Intermediate-Advanced",
+          "icon": "aws"
+        },
+        {
+          "name": "Vercel",
+          "level": "Advanced",
+          "icon": "vercel"
+        },
+        {
+          "name": "Linux/Ubuntu",
+          "level": "Advanced",
+          "icon": "linux"
+        },
+        {
+          "name": "Azure",
+          "level": "Intermediate-Advanced",
+          "icon": "azure"
+        },
+        {
+          "name": "Azure DevOps",
+          "level": "Advanced",
+          "icon": "azuredevops"
+        },
+        {
+          "name": "Postman",
+          "level": "Intermediate",
+          "icon": "postman"
+        },
+        {
+          "name": "Cloudflare",
+          "level": "Intermediate",
+          "icon": "cloudflare"
+        },
+        {
+          "name": "Google Cloud Platform",
+          "level": "Intermediate",
+          "icon": "gcp"
+        }
+      ]
+    },
+    {
+      "name": "Concepts & Expertise",
+      "skills": [
+        {
+          "name": "Full-Stack Web Development",
+          "level": "Advanced"
+        },
+        {
+          "name": "API Design",
+          "level": "Advanced"
+        },
+        {
+          "name": "Data Structures",
+          "level": "Intermediate"
+        },
+        {
+          "name": "System Design",
+          "level": "Advanced"
+        },
+        {
+          "name": "Cybersecurity Fundamentals",
+          "level": "Advanced"
+        },
+        {
+          "name": "Database Management",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Systems Modeling",
+          "level": "Intermediate"
+        }
+      ]
+    }
+  ],
+  "softSkills": [
+    "Critical Thinking",
+    "Adaptability & Fast Learning",
+    "Collaboration & Teamwork",
+    "Initiative & Self-Motivation",
+    "Communication Skills",
+    "Analytical Thinking",
+    "Time Management",
+    "Attention to Detail",
+    "Problem Solving"
+  ]
+}
