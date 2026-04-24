@@ -1,159 +1,98 @@
 import { getAllProjects, getProjectBySlug } from '@/lib/content/loader';
 import { Markdown } from '@/components/ui/markdown';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Github, ExternalLink, Code2 } from 'lucide-react';
-import { projectVideos } from '@/lib/media';
+import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
+import { projectImages } from '@/lib/media';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.map(project => ({ slug: project.slug }));
 }
-
-const projectImages: { [key: string]: string } = {
-  'workout-app': '💪',
-  'gaminghub': '🎮',
-  'grace-on-going': '✝️',
-  'cnc-construction': '🏗️',
-  'voice-up-athletics': '🏈',
-};
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
+  const imageUrl = projectImages[project.slug];
+  const isLive = project.status === 'Live' || project.status === 'Completed';
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[rgb(232,233,243)] to-[rgb(206,206,206)] py-12">
-      <div className="max-w-5xl mx-auto px-4">
-        {/* Back Button */}
-        <Button
-          asChild
-          variant="outline"
-          className="mb-8 border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
+    <div className="min-h-screen bg-[#F1F5F9]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Back */}
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-sky-500 transition-colors mb-10"
         >
-          <Link href="/projects">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </Link>
-        </Button>
+          <ArrowLeft size={16} />
+          Back to Projects
+        </Link>
 
-        {/* Hero Section */}
-        <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
-          <div className="h-48 bg-linear-to-br from-[rgb(177,229,242)]/30 to-[rgb(206,206,206)]/30 flex items-center justify-center relative">
-            <span className="text-9xl">{projectImages[project.slug] || '📦'}</span>
-            <Badge
-              className={`absolute top-6 right-6 text-base px-4 py-2 ${
-                project.status === 'Completed' || project.status === 'Live'
-                  ? 'bg-[rgb(177,229,242)] text-[rgb(39,38,53)]'
-                  : 'bg-[rgb(206,206,206)] text-[rgb(39,38,53)]'
-              }`}
-            >
-              {project.status}
-            </Badge>
+        {/* Hero card */}
+        <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 mb-8">
+          <div className="relative h-64 bg-gradient-to-br from-sky-100 to-slate-100">
+            {imageUrl ? (
+              <img src={imageUrl} alt={project.title} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-8xl font-bold text-slate-200">{project.title.charAt(0)}</span>
+              </div>
+            )}
+            {isLive && (
+              <span className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/90 text-green-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                LIVE
+              </span>
+            )}
           </div>
 
           <div className="p-8">
-            <h1 className="text-5xl font-bold mb-4 text-[rgb(39,38,53)]">{project.title}</h1>
+            <h1 className="text-4xl font-bold text-slate-900 mb-4">{project.title}</h1>
 
             <div className="flex flex-wrap gap-2 mb-6">
-              {project.tech.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="secondary"
-                  className="bg-[rgb(177,229,242)]/20 text-[rgb(39,38,53)] px-3 py-1"
+              {project.tech.map(tech => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 bg-slate-100 text-slate-600 text-sm rounded-lg font-medium"
                 >
                   {tech}
-                </Badge>
+                </span>
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {project.github && (
-                <Button
-                  asChild
-                  className="bg-[rgb(177,229,242)] text-[rgb(39,38,53)] hover:bg-[rgb(177,229,242)]/80"
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-700 transition-colors"
                 >
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
-                    View on GitHub
-                  </a>
-                </Button>
+                  <Github size={16} />
+                  GitHub
+                </a>
               )}
               {project.demo && (
-                <Button
-                  asChild
-                  className="bg-[rgb(39,38,53)] text-white hover:bg-[rgb(28,27,38)]"
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-sky-500 text-white rounded-xl text-sm font-semibold hover:bg-sky-600 transition-colors"
                 >
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </a>
-                </Button>
+                  <ExternalLink size={16} />
+                  Live Demo
+                </a>
               )}
             </div>
           </div>
-        </Card>
+        </div>
 
-        {/* Video Demo */}
-        {project.video && (
-          <Card className="mb-8 overflow-hidden border-2 border-[rgb(177,229,242)] bg-white/90 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-2xl text-[rgb(39,38,53)]">Project Demo</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <video
-                controls
-                className="w-full rounded-lg"
-              >
-                <source src={projectVideos[project.video as keyof typeof projectVideos]} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Content */}
-        <Card className="mb-8 p-8 bg-white/90 backdrop-blur-sm border-2 border-[rgb(177,229,242)]/20">
+        {/* Markdown content */}
+        <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
           <Markdown content={project.content} />
-        </Card>
-
-        {/* Related Skills */}
-        {project.skills && project.skills.length > 0 && (
-          <Card className="mb-8 p-8 bg-linear-to-br from-[rgb(177,229,242)]/10 to-[rgb(206,206,206)]/10 border-2 border-[rgb(177,229,242)]">
-            <CardHeader className="p-0 mb-6">
-              <CardTitle className="text-2xl text-[rgb(39,38,53)] flex items-center gap-2">
-                <Code2 className="w-6 h-6" />
-                Skills Used in This Project
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-0">
-              <div className="flex flex-wrap gap-3">
-                {project.skills.map((skillSlug) => (
-                  <Button
-                    key={skillSlug}
-                    asChild
-                    variant="outline"
-                    className="border-[rgb(177,229,242)] hover:bg-[rgb(177,229,242)]/20"
-                  >
-                    <Link href={`/skills/${skillSlug}`}>
-                      <Code2 className="w-4 h-4 mr-2" />
-                      {skillSlug.charAt(0).toUpperCase() + skillSlug.slice(1).replace(/-/g, ' ')}
-                    </Link>
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        </div>
       </div>
     </div>
   );
