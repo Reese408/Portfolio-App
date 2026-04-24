@@ -4,8 +4,9 @@ slug: "gaminghub"
 status: "Completed"
 tech: ["EJS", "Node.js", "MongoDB", "Socket.io"]
 github: "https://github.com/Reese408/GamingHub"
-demo: ""
+demo: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/GamingHub/gaming-hub-demo.mp4"
 video: "gamingHub"
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/GamingHub/GamingHub-Image.png"
 featured: true
 order: 2
 ---

@@ -4,8 +4,9 @@ slug: "cnc-construction"
 status: "Completed"
 tech: ["Django", "JavaScript", "HTML/CSS", "SQLite"]
 github: "https://github.com/Reese408/CS293"
-demo: ""
+demo: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/CNC/cnc-demo.mp4"
 video: "cnc"
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/CNC/CNC-Image.png"
 featured: true
 order: 4
 ---

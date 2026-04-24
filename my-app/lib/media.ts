@@ -32,11 +32,10 @@ export const miscMedia = {
    Project Card Images
 ========================= */
 export const projectImages: Record<string, string> = {
-  // Add S3 image URLs here when uploaded
-  // 'voice-up-athletics': `${MEDIA_BASE}/projects/voice-up-athletics/cover.jpg`,
-  // 'suds-on-wheels-usa': `${MEDIA_BASE}/projects/suds-on-wheels-usa/cover.jpg`,
-  // 'grace-on-going': `${MEDIA_BASE}/projects/grace-on-going/cover.jpg`,
-  // 'cnc-construction': `${MEDIA_BASE}/projects/cnc-construction/cover.jpg`,
-  // 'gaminghub': `${MEDIA_BASE}/projects/gaminghub/cover.jpg`,
-  // 'workout-app': `${MEDIA_BASE}/projects/workout-app/cover.jpg`,
+  'cnc-construction': `${MEDIA_BASE}/projects/CNC/CNC-Image.png`,
+  'gaminghub': `${MEDIA_BASE}/projects/GamingHub/GamingHub-Image.png`,
+  'workout-app': `${MEDIA_BASE}/projects/WorkoutApp/Workout-Image.png`,
+  'grace-on-going': `${MEDIA_BASE}/projects/Grace/GOG-Image.png`,
+  'voice-up-athletics': `${MEDIA_BASE}/projects/VoiceUpAthletics/VUA-Image.png`,
+  'suds-on-wheels-usa': `${MEDIA_BASE}/projects/SudsOnWheels/SOW-Image.png`,
 };

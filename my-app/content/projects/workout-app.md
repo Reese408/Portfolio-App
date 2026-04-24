@@ -4,8 +4,9 @@ slug: "workout-app"
 status: "In Progress"
 tech: ["Next.js", "Prisma", "React", "PostgreSQL", "TypeScript", "AWS S3"]
 github: "https://github.com/Reese408/WorkoutApp-3"
-demo: ""
+demo: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/WorkoutApp/workout-app-demo.mp4"
 video: "workoutApp"
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/WorkoutApp/Workout-Image.png"
 featured: true
 order: 1
 ---

@@ -5,6 +5,7 @@ status: "Live"
 tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Shopify", "GraphQL", "Zustand", "React Query", "AWS S3", "Vercel"]
 github: "https://github.com/Reese408/GOGE-Commerce.git"
 demo: "https://graceongoing.com"
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/Grace/GOG-Image.png"
 featured: true
 order: 3
 ---

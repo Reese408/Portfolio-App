@@ -4,6 +4,7 @@ slug: "voice-up-athletics"
 status: "Live"
 demo: "https://voiceupathletics.com"
 tech: ["C# / .NET 10", "ASP.NET Core Web API", "React", "Next.js", "Expo / React Native", "TypeScript", "Azure SQL", "Azure App Service", "Azure Static Web Apps", "Azure DevOps", "Microsoft Entra ID", "Entity Framework Core", "SignalR", "Hangfire", "Azure Communication Services", "Clean Architecture"]
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/VoiceUpAthletics/VUA-Image.png"
 featured: true
 order: 1
 ---

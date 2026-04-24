@@ -5,6 +5,7 @@ status: "Live"
 demo: "https://sudsonwheelsusa.com"
 tech: ["Next.js 16+", "React", "TypeScript", "Tailwind CSS v4", "shadcn/ui", "Supabase", "Resend", "Cloudflare Turnstile", "Upstash Redis", "Google Maps API", "Google Calendar API", "Vercel", "GitHub Actions", "Zod", "React Hook Form"]
 github: "https://github.com/sudsonwheelsusa/sudsonwheels-website"
+image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/SudsOnWheels/SOW-Image.png"
 featured: true
 order: 2
 ---

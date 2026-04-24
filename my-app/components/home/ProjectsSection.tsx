@@ -35,7 +35,7 @@ export default function ProjectsSection({ projects }: ProjectsProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map(project => {
             const imageUrl = projectImages[project.slug];
-            const isLive = project.status === 'Live' || project.status === 'Completed';
+            const isLive = project.status === 'Live';
 
             return (
               <div
