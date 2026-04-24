@@ -106,6 +106,8 @@ Three distinct roles are enforced at both the API middleware and data layer:
 ## Contributors
 
 - Reese Redman — full-stack developer, architect, and product lead
+- Lukas Schreck - Cloud, DevOps and Database Orchestration
+- Jason Formani - Mobile With Expo
 - Voice Up Athletics founding team — product strategy and domain guidance
 - Client stakeholders — compliance requirements, early adoption feedback, and validation
 
