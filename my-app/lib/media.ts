@@ -27,3 +27,16 @@ export const miscMedia = {
   profilePic: `${MEDIA_BASE}/misc/ProfilePic.jpg`,
   resume: `${MEDIA_BASE}/misc/Resume.pdf`,
 } as const;
+
+/* =========================
+   Project Card Images
+========================= */
+export const projectImages: Record<string, string> = {
+  // Add S3 image URLs here when uploaded
+  // 'voice-up-athletics': `${MEDIA_BASE}/projects/voice-up-athletics/cover.jpg`,
+  // 'suds-on-wheels-usa': `${MEDIA_BASE}/projects/suds-on-wheels-usa/cover.jpg`,
+  // 'grace-on-going': `${MEDIA_BASE}/projects/grace-on-going/cover.jpg`,
+  // 'cnc-construction': `${MEDIA_BASE}/projects/cnc-construction/cover.jpg`,
+  // 'gaminghub': `${MEDIA_BASE}/projects/gaminghub/cover.jpg`,
+  // 'workout-app': `${MEDIA_BASE}/projects/workout-app/cover.jpg`,
+};

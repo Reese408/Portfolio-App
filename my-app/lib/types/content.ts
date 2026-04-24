@@ -52,11 +52,11 @@ export interface Award {
 
 // Skills Types
 export interface SkillsData {
-  categories: SkillCategory[];
+  categories: LegacySkillCategory[];
   softSkills: string[];
 }
 
-export interface SkillCategory {
+export interface LegacySkillCategory {
   name: string;
   skills: Skill[];
 }
@@ -164,4 +164,16 @@ export interface ExperienceMetadata {
   endDate: string;
   type: string;
   skills?: string[]; // Skill slugs to link back to
+}
+
+// New Skills Data Types (replaces markdown-based skills)
+export interface SkillEntry {
+  name: string;
+  logo: string;
+  description: string;
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: SkillEntry[];
 }
