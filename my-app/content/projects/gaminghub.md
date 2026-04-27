@@ -2,10 +2,10 @@
 title: "GamingHub"
 slug: "gaminghub"
 status: "Completed"
-tech: ["EJS", "Node.js", "MongoDB", "Socket.io"]
+tech: ["Node.js", "Express.js", "EJS", "JavaScript", "CSS3", "HTML5", "MongoDB", "Mongoose", "Socket.io", "bcrypt", "express-session"]
 github: "https://github.com/Reese408/GamingHub"
 demo: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/GamingHub/gaming-hub-demo.mp4"
-video: "gamingHub"
+video: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/GamingHub/gaming-hub-demo.mp4"
 image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/GamingHub/GamingHub-Image.png"
 featured: true
 order: 2
@@ -79,3 +79,13 @@ Successfully delivered a smooth multiplayer experience with:
 - Password hashing and session management
 - MongoDB schema design for gaming data
 - Event-driven architecture patterns
+
+## Tools & Languages
+
+**Languages:** JavaScript, HTML5, CSS3
+
+**Frameworks & Libraries:** Node.js, Express.js, EJS (templating), Socket.io, Mongoose, bcrypt, express-session
+
+**Database:** MongoDB
+
+**Deployment:** Heroku (backend), Netlify (frontend)

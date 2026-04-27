@@ -3,8 +3,9 @@ title: "Voice Up Athletics"
 slug: "voice-up-athletics"
 status: "Live"
 demo: "https://voiceupathletics.com"
-tech: ["C# / .NET 10", "ASP.NET Core Web API", "React", "Next.js", "Expo / React Native", "TypeScript", "Azure SQL", "Azure App Service", "Azure Static Web Apps", "Azure DevOps", "Microsoft Entra ID", "Entity Framework Core", "SignalR", "Hangfire", "Azure Communication Services", "Clean Architecture"]
+tech: ["C#", ".NET 10", "ASP.NET Core Web API", "React", "Next.js", "Expo / React Native", "TypeScript", "Tailwind CSS", "shadcn/ui", "TanStack Query", "Azure SQL", "Azure Blob Storage", "Azure App Service", "Azure Static Web Apps", "Azure Front Door", "Azure DevOps", "Azure Communication Services", "Microsoft Entra ID", "Entity Framework Core", "SignalR", "Hangfire", "Playwright", "Clean Architecture", "JWT", "Zod"]
 image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/VoiceUpAthletics/VUA-Image.png"
+video: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/VoiceUpAthletics/VUA-DEMO.mp4"
 featured: true
 order: 1
 ---
@@ -47,8 +48,30 @@ Voice Up Athletics gives universities a privacy-first platform for anonymous ath
 - Azure Static Web Apps for the frontend
 - Azure App Service for the API
 - Azure SQL and Azure Blob Storage for data and media
-- Azure DevOps pipelines for build, test, and deploy to dev → QA → prod
-- Environment-aware secrets and automated deployments
+- Azure DevOps multi-stage pipelines (Dev → QA → Prod) with environment gates
+- Environment-aware secrets and automated deployments via pipeline variable groups
+- Azure Front Door configured as the global CDN layer for performance and routing
+
+## Development Lifecycle — Azure DevOps Pipelines
+
+The project follows a structured three-environment promotion model managed entirely through Azure DevOps.
+
+### Environments
+
+| Environment | Purpose |
+|-------------|---------|
+| **Dev** | Active feature development; deploys on every push to `develop` |
+| **QA** | Integration and regression testing; requires passing build gate before promotion |
+| **Prod** | Live environment at voiceupathletics.com; requires manual approval gate before release |
+
+### Pipeline Design
+- YAML-defined multi-stage pipelines with distinct build, test, and deploy stages per environment
+- Pipeline variable groups store environment-specific secrets (connection strings, Entra client IDs, app config) — no secrets in source control
+- Build artifacts are promoted between stages rather than rebuilt, ensuring what is tested in QA is exactly what ships to prod
+- Automated Playwright E2E tests run against the QA environment before the prod gate opens
+- Rollback is handled by re-deploying the previous validated artifact
+
+This model gave the team confidence to deploy frequently while protecting the live client environment from untested changes.
 
 ## Architecture
 
@@ -113,12 +136,38 @@ Three distinct roles are enforced at both the API middleware and data layer:
 
 ## Tools, Skills, and Courses
 
-- Tools: Azure DevOps, Microsoft Entra ID, SignalR, Hangfire, Azure Communication Services, Playwright, Claude Code / AI-assisted development, GitHub Copilot
-- Skills: C#, ASP.NET Core, Entity Framework Core, React, Next.js, TypeScript, Tailwind CSS, multi-tenant architecture, auth/authorization, real-time systems, privacy-first design
-- Course: Senior Capstone (CS499) — real client project experience, architecture, deployment, and product launch
+**Languages:** C#, TypeScript, JavaScript, SQL, YAML
+
+**Frameworks & Libraries:** ASP.NET Core 10, Entity Framework Core 10, Next.js 16, React 19, Expo / React Native, Tailwind CSS, shadcn/ui v4, TanStack Query, SignalR, Hangfire, Zod
+
+**Cloud & Infrastructure:** Azure App Service, Azure Static Web Apps, Azure SQL, Azure Blob Storage, Azure Front Door, Azure Communication Services, Microsoft Entra ID
+
+**DevOps & Tooling:** Azure DevOps (YAML pipelines, variable groups, environment gates), Playwright (E2E testing), Claude Code / AI-assisted development, GitHub Copilot
+
+**Architecture Patterns:** Clean Architecture (3-layer), Multi-tenant SaaS, Role-based authorization, Finite state machine (case lifecycle), Privacy-first design, Real-time messaging
+
+**Course:** Senior Capstone (CS499) — real client project experience, architecture, deployment, and product launch
+
+## Roadmap — University Scale-Out
+
+When Voice Up Athletics is certified to sell to universities, the infrastructure is designed to scale per-institution using Azure Front Door as the global CDN and routing layer.
+
+### Azure Front Door — CDN & University Subdomains
+
+Azure Front Door sits in front of all origins and handles:
+
+- **Global CDN** — Static assets and cacheable API responses are served from edge nodes worldwide, reducing latency for university users regardless of region
+- **University Subdomains** — Each certified university receives a dedicated subdomain (e.g., `stateuniversity.voiceupathletics.com`, `northwestern.voiceupathletics.com`) routed through Front Door rules
+- **Tenant Routing** — Front Door custom rules extract the subdomain prefix and forward requests to the correct App Service origin with the tenant identifier in the header, keeping a single API deployment serving all universities cleanly
+- **TLS Termination** — Managed certificates per subdomain via Front Door, eliminating per-university cert management overhead
+- **WAF Policy** — Front Door WAF rules provide a shared security baseline across all university endpoints
+
+This approach means onboarding a new university is a DNS record + Front Door routing rule change, not a new deployment.
 
 ## Next / Still to Add
 
+- Certification and onboarding flow for new universities
+- Azure Front Door subdomain provisioning automation per university tenant
 - Polished athlete engagement layer and campus feed content
 - Advanced compliance analytics and dashboard filtering
 - Expanded audit log and export capabilities

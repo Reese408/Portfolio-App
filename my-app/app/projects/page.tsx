@@ -35,7 +35,8 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map(project => {
             const imageUrl = projectImages[project.slug];
-            const isLive = project.status === 'Live' || project.status === 'Completed';
+            const isLive = project.status === 'Live';
+            const isCompleted = project.status === 'Completed';
 
             return (
               <div
@@ -61,6 +62,12 @@ export default function ProjectsPage() {
                     <span className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 text-green-600 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
                       <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                       LIVE
+                    </span>
+                  )}
+                  {isCompleted && (
+                    <span className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 text-slate-600 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                      <span className="w-1.5 h-1.5 bg-slate-400 rounded-full" />
+                      Complete
                     </span>
                   )}
                   {project.status === 'In Progress' && (
@@ -109,7 +116,7 @@ export default function ProjectsPage() {
                         className="flex items-center gap-1.5 px-3 py-1.5 border border-sky-200 text-sky-600 rounded-lg text-xs font-semibold hover:bg-sky-50 transition-colors"
                       >
                         <ExternalLink size={12} />
-                        Live Demo
+                        {project.status === 'Live' ? 'Live Demo' : 'Demo'}
                       </a>
                     )}
                     {project.github && (

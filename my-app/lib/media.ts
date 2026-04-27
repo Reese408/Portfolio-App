@@ -4,11 +4,12 @@ export const MEDIA_BASE =
 /* =========================
    Project Demo Videos
 ========================= */
-export const projectVideos = {
+export const projectVideos: Record<string, string> = {
   cnc: `${MEDIA_BASE}/projects/CNC/cnc-demo.mp4`,
   gamingHub: `${MEDIA_BASE}/projects/GamingHub/gaming-hub-demo.mp4`,
   workoutApp: `${MEDIA_BASE}/projects/WorkoutApp/workout-app-demo.mp4`,
-} as const;
+  'voice-up-athletics': `${MEDIA_BASE}/projects/VoiceUpAthletics/VUA-DEMO.mp4`,
+};
 
 /* =========================
    Certificates

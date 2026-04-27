@@ -3,7 +3,7 @@ import { Markdown } from '@/components/ui/markdown';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
-import { projectImages } from '@/lib/media';
+import { projectImages, projectVideos } from '@/lib/media';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
@@ -16,7 +16,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   if (!project) notFound();
 
   const imageUrl = projectImages[project.slug];
-  const isLive = project.status === 'Live' || project.status === 'Completed';
+  const rawVideo = project.video?.startsWith('http') ? project.video : undefined;
+  const videoUrl = rawVideo || projectVideos[project.slug];
+  const isLive = project.status === 'Live';
+  const isCompleted = project.status === 'Completed';
 
   return (
     <div className="min-h-screen bg-[#F1F5F9]">
@@ -44,6 +47,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <span className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/90 text-green-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 LIVE
+              </span>
+            )}
+            {isCompleted && (
+              <span className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/90 text-slate-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                <span className="w-1.5 h-1.5 bg-slate-400 rounded-full" />
+                Complete
               </span>
             )}
           </div>
@@ -82,12 +91,28 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   className="flex items-center gap-2 px-5 py-2.5 bg-sky-500 text-white rounded-xl text-sm font-semibold hover:bg-sky-600 transition-colors"
                 >
                   <ExternalLink size={16} />
-                  Live Demo
+                  {project.status === 'Live' ? 'Live Demo' : 'Demo'}
                 </a>
               )}
             </div>
           </div>
         </div>
+
+        {/* Demo video */}
+        {videoUrl && (
+          <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm mb-8">
+            <div className="px-8 pt-8 pb-4">
+              <h2 className="text-lg font-semibold text-slate-800">Demo</h2>
+            </div>
+            <video
+              src={videoUrl}
+              controls
+              playsInline
+              className="w-full"
+              preload="metadata"
+            />
+          </div>
+        )}
 
         {/* Markdown content */}
         <div className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">

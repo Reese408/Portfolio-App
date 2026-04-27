@@ -2,10 +2,10 @@
 title: "CNC Construction Website"
 slug: "cnc-construction"
 status: "Completed"
-tech: ["Django", "JavaScript", "HTML/CSS", "SQLite"]
+tech: ["Python", "Django", "JavaScript", "HTML5", "CSS3", "SQLite", "Django Auth", "Django ORM"]
 github: "https://github.com/Reese408/CS293"
 demo: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/CNC/cnc-demo.mp4"
-video: "cnc"
+video: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/CNC/cnc-demo.mp4"
 image: "https://reeses-portfolio-media.s3.us-east-2.amazonaws.com/projects/CNC/CNC-Image.png"
 featured: true
 order: 4
@@ -59,3 +59,13 @@ I learned how to create end to end full stack applications which are scalable an
 - Deployment and production considerations
 - Time management under deadlines
 - Client communication and project management
+
+## Tools & Languages
+
+**Languages:** Python, JavaScript, HTML5, CSS3
+
+**Frameworks & Libraries:** Django, Django ORM, Django Auth
+
+**Database:** SQLite
+
+**Concepts:** MVC/MVT pattern, form handling with file uploads, session-based authentication, admin dashboard
