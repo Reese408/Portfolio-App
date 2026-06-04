@@ -56,12 +56,6 @@ export default function HeroSection({ resume }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — text */}
           <div className="space-y-6">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-200 text-sky-600 text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Open to Opportunities
-            </div>
-
             {/* Typewriter title */}
             <h1 className="text-5xl sm:text-6xl font-bold text-slate-900 leading-tight">
               <TypewriterText />
@@ -136,11 +130,6 @@ export default function HeroSection({ resume }: HeroSectionProps) {
                   alt={resume.name}
                   className="w-full h-full object-cover object-top"
                 />
-              </div>
-              {/* Available badge */}
-              <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 shadow-md text-xs font-semibold text-slate-700">
-                <span className="w-2 h-2 bg-green-400 rounded-full" />
-                Available
               </div>
             </div>
           </div>

@@ -151,6 +151,7 @@ export interface ExperienceDetail {
   startDate: string;
   endDate: string;
   type: 'internship' | 'full-time' | 'part-time' | 'contract';
+  order: number;
   skills?: string[]; // Skill slugs to link back to
   content: string; // Markdown content
   metadata: ExperienceMetadata;
@@ -163,6 +164,7 @@ export interface ExperienceMetadata {
   startDate: string;
   endDate: string;
   type: string;
+  order?: number;
   skills?: string[]; // Skill slugs to link back to
 }
 

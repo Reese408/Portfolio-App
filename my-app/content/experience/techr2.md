@@ -1,17 +1,18 @@
 ---
-title: "System Engineer Intern"
-company: "Techr2"
+title: "Systems Engineer (Intern)"
+company: "TechR2, LLC"
 location: "Pataskala, Ohio"
 startDate: "May 2025"
-endDate: "Aug 2025"
+endDate: "May 2026"
 type: "internship"
+order: 2
 ---
 
-# System Engineer Intern - Techr2
+# Systems Engineer (Intern) - TechR2, LLC
 
 ## Overview
 
-Executed data security audits and supported secure data destruction processes for enterprise clients at Techr2, ensuring compliance with GDPR, NIST, and governmental regulations.
+Executed data security audits and supported secure data destruction processes for enterprise clients at TechR2, LLC, ensuring compliance with GDPR, NIST, and governmental regulations.
 
 ## Key Responsibilities
 

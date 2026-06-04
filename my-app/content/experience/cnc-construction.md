@@ -5,6 +5,7 @@ location: "Ashland, Ohio"
 startDate: "May 2024"
 endDate: "Aug 2024"
 type: "internship"
+order: 3
 ---
 
 # Web Development Intern - CNC Construction

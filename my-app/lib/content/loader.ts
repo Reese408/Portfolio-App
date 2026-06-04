@@ -188,13 +188,14 @@ export function getAllExperience(): ExperienceDetail[] {
         startDate: data.startDate,
         endDate: data.endDate,
         type: data.type,
+        order: data.order ?? 999,
         skills: data.skills || [],
         content,
         metadata: data as ExperienceMetadata,
       } as ExperienceDetail;
     });
 
-  return experiences;
+  return experiences.sort((a, b) => a.order - b.order);
 }
 
 export function getExperienceByCompany(company: string): ExperienceDetail | null {
@@ -211,6 +212,7 @@ export function getExperienceByCompany(company: string): ExperienceDetail | null
       startDate: data.startDate,
       endDate: data.endDate,
       type: data.type,
+      order: data.order ?? 999,
       skills: data.skills || [],
       content,
       metadata: data as ExperienceMetadata,
